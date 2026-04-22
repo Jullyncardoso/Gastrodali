@@ -43,7 +43,7 @@ function Cardapio() {
             className="flex items-center gap-3"
           >
             <div className="h-px w-12 bg-primary" />
-            <span className="eyebrow">N° 03 · O cardápio</span>
+            <span className="eyebrow">O cardápio · Muriaé · MG</span>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}

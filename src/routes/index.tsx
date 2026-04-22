@@ -88,7 +88,7 @@ function Home() {
             transition={{ duration: 1, delay: 0.2 }}
             className="mb-10"
           >
-            <Eyebrow>N° 01 · Muriaé · MG · Est. 2023</Eyebrow>
+            <Eyebrow>Muriaé · MG · Est. 2023</Eyebrow>
           </motion.div>
 
           <h1 className="font-display text-[3.5rem] font-light leading-[0.92] md:text-7xl lg:text-[7.5rem]">
