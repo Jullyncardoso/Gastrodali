@@ -29,43 +29,42 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-gold: var(--gold);
-  --color-burgundy: var(--burgundy);
-  --color-cream: var(--cream);
+  --color-paper: var(--paper);
   --color-ink: var(--ink);
+  --color-burgundy: var(--burgundy);
   --font-display: "Cormorant Garamond", "Georgia", serif;
-  --font-body: "Outfit", system-ui, sans-serif;
-  --shadow-elegant: 0 30px 80px -30px color-mix(in oklab, var(--ink) 50%, transparent);
-  --shadow-gold: 0 20px 60px -20px color-mix(in oklab, var(--gold) 45%, transparent);
-  --gradient-hero: linear-gradient(135deg, var(--ink) 0%, var(--burgundy) 100%);
-  --gradient-gold: linear-gradient(135deg, color-mix(in oklab, var(--gold) 75%, white), var(--gold) 50%, color-mix(in oklab, var(--gold) 70%, black));
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --shadow-elegant: 0 30px 80px -30px rgba(0, 0, 0, 0.6);
+  --shadow-gold: 0 20px 60px -20px color-mix(in oklab, var(--gold) 40%, transparent);
 }
 
 :root {
-  --radius: 0.5rem;
-  /* Warm sophisticated: aged ivory base, deep ink for depth, burgundy & real gold accents */
-  --background: oklch(0.95 0.018 75);
-  --foreground: oklch(0.18 0.025 30);
-  --card: oklch(0.97 0.012 80);
-  --card-foreground: oklch(0.18 0.025 30);
-  --popover: oklch(0.97 0.012 80);
-  --popover-foreground: oklch(0.18 0.025 30);
-  --primary: oklch(0.32 0.14 22); /* deep burgundy */
-  --primary-foreground: oklch(0.97 0.018 80);
-  --secondary: oklch(0.68 0.14 78); /* real gold */
-  --secondary-foreground: oklch(0.18 0.025 30);
-  --muted: oklch(0.91 0.018 75);
-  --muted-foreground: oklch(0.40 0.02 40);
-  --accent: oklch(0.68 0.14 78);
-  --accent-foreground: oklch(0.18 0.025 30);
+  --radius: 0.25rem;
+  /* Editorial Noir: deep ink, warm paper, real gold, burgundy accent */
+  --ink: #0E0B0A;
+  --paper: #F2EBDD;
+  --gold: #C9A961;
+  --burgundy: #6E1F2A;
+
+  --background: #0E0B0A;
+  --foreground: #F2EBDD;
+  --card: #15110F;
+  --card-foreground: #F2EBDD;
+  --popover: #15110F;
+  --popover-foreground: #F2EBDD;
+  --primary: #C9A961;
+  --primary-foreground: #0E0B0A;
+  --secondary: #6E1F2A;
+  --secondary-foreground: #F2EBDD;
+  --muted: #1A1614;
+  --muted-foreground: rgba(242, 235, 221, 0.6);
+  --accent: #C9A961;
+  --accent-foreground: #0E0B0A;
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.85 0.025 70);
-  --input: oklch(0.90 0.018 75);
-  --ring: oklch(0.68 0.14 78);
-  --gold: oklch(0.72 0.15 80);
-  --burgundy: oklch(0.32 0.14 22);
-  --cream: oklch(0.93 0.025 75);
-  --ink: oklch(0.16 0.02 30);
+  --border: rgba(242, 235, 221, 0.15);
+  --input: rgba(242, 235, 221, 0.1);
+  --ring: #C9A961;
 }
 
 @layer base {
@@ -76,29 +75,46 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
-    font-feature-settings: "ss01", "cv11";
+    font-feature-settings: "ss01";
+    -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
-    font-weight: 500;
+    font-weight: 400;
+  }
+  ::selection {
+    background: var(--gold);
+    color: var(--ink);
   }
 }
 
-/* Subtle grain texture for depth */
+/* Subtle film grain */
 .bg-grain {
   background-image:
-    radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--ink) 8%, transparent) 1px, transparent 0);
-  background-size: 24px 24px;
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+}
+
+.chapter-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0.5;
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.08); }
-}
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-14px) rotate(2deg); }
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.04); }
 }
 @keyframes spin-slow {
   to { transform: rotate(360deg); }
@@ -111,40 +127,27 @@
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
-@keyframes ink-drop {
-  0% { clip-path: circle(0% at 50% 50%); }
-  100% { clip-path: circle(150% at 50% 50%); }
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
-@keyframes draw-line {
-  from { stroke-dashoffset: 1000; }
-  to { stroke-dashoffset: 0; }
-}
-.animate-shimmer { animation: shimmer 5s ease-in-out infinite; }
-.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
-.animate-spin-slow { animation: spin-slow 80s linear infinite; }
-.animate-drift { animation: drift 14s ease-in-out infinite; }
-.animate-ink-drop { animation: ink-drop 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+.animate-shimmer { animation: shimmer 6s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 90s linear infinite; }
+.animate-drift { animation: drift 16s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
 
 .text-gold-shine {
   background: linear-gradient(
     100deg,
-    color-mix(in oklab, var(--gold) 60%, var(--burgundy)) 0%,
-    var(--gold) 35%,
+    color-mix(in oklab, var(--gold) 70%, var(--burgundy)) 0%,
+    var(--gold) 40%,
     color-mix(in oklab, var(--gold) 50%, white) 50%,
-    var(--gold) 65%,
-    color-mix(in oklab, var(--gold) 60%, var(--burgundy)) 100%
+    var(--gold) 60%,
+    color-mix(in oklab, var(--gold) 70%, var(--burgundy)) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shine 6s linear infinite;
-}
-
-.divider-ornament::before,
-.divider-ornament::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 60%, transparent), transparent);
+  animation: shine 7s linear infinite;
 }
