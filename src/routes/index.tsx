@@ -1,15 +1,22 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import * as React from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+  AnimatePresence,
+} from "framer-motion";
 import {
   ArrowRight,
+  ArrowLeft,
   Star,
   MapPin,
   Phone,
-  Clock,
   Navigation,
   Quote,
   Instagram,
+  Utensils,
 } from "lucide-react";
 import hero from "@/assets/gallery-ambiente.png";
 import bar from "@/assets/gallery-bar.png";
