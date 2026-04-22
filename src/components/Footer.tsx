@@ -36,10 +36,10 @@ export function Footer() {
           <h4 className="mb-4 text-sm font-semibold uppercase tracking-widest text-primary">Navegue</h4>
           <ul className="grid grid-cols-2 gap-y-2 text-sm text-foreground/85">
             <li><Link to="/cardapio" className="hover:text-primary">Cardápio</Link></li>
-            <li><Link to="/historia" className="hover:text-primary">Nossa História</Link></li>
-            <li><Link to="/galeria" className="hover:text-primary">Galeria</Link></li>
-            <li><Link to="/avaliacoes" className="hover:text-primary">Avaliações</Link></li>
-            <li><Link to="/visite" className="hover:text-primary">Visite-nos</Link></li>
+            <li><Link to="/" hash="historia" className="hover:text-primary">História</Link></li>
+            <li><Link to="/" hash="galeria" className="hover:text-primary">Galeria</Link></li>
+            <li><Link to="/" hash="avaliacoes" className="hover:text-primary">Avaliações</Link></li>
+            <li><Link to="/" hash="visite" className="hover:text-primary">Visite-nos</Link></li>
             <li><Link to="/checkout" className="hover:text-primary">Pedido</Link></li>
           </ul>
         </div>
