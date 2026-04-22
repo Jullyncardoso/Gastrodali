@@ -201,6 +201,16 @@ function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30" />
           <div className="absolute inset-0 bg-grain opacity-30" />
 
+          {/* Floating melting clock — Dalí signature */}
+          <motion.div
+            initial={{ opacity: 0, y: -30, rotate: -12 }}
+            animate={{ opacity: 1, y: 0, rotate: -8 }}
+            transition={{ duration: 1.6, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute left-6 top-10 z-10 hidden md:block"
+          >
+            <MeltingClock className="h-40 w-48 text-primary animate-melt drop-shadow-2xl" />
+          </motion.div>
+
           {/* caption */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -208,13 +218,26 @@ function Home() {
             transition={{ duration: 1, delay: 1.4 }}
             className="absolute bottom-10 right-6 z-10 max-w-[14rem] text-right md:right-10"
           >
-            <div className="eyebrow mb-2">A casa</div>
+            <div className="eyebrow mb-2">A casa onírica</div>
             <div className="font-display text-3xl italic text-foreground">
               Boulevard Center
             </div>
           </motion.div>
         </motion.div>
       </section>
+
+      {/* ================= MARCHING ANTS — surrealist divider ================= */}
+      <div className="relative h-10 overflow-hidden border-y border-border bg-background">
+        <div className="pointer-events-none absolute inset-0 flex items-center text-primary/35">
+          <div className="flex gap-10 animate-ant-march whitespace-nowrap">
+            {Array.from({ length: 14 }).map((_, i) => (
+              <Ant key={i} className="h-3 w-6 shrink-0" />
+            ))}
+          </div>
+        </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
+      </div>
 
       {/* ================= STATS BAR ================= */}
       <section className="border-y border-border">
