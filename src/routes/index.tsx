@@ -90,7 +90,17 @@ function Home() {
             transition={{ duration: 1, delay: 0.2 }}
             className="mb-10"
           >
-            <Eyebrow>Muriaé · MG · Est. 2023</Eyebrow>
+            <Eyebrow>Muriaé · MG · Inspirado em Dalí</Eyebrow>
+          </motion.div>
+
+          {/* Surrealist mustache mark */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
+            animate={{ opacity: 0.85, scale: 1, rotate: 0 }}
+            transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 -ml-1"
+          >
+            <Mustache className="h-7 w-24 text-primary animate-sway" />
           </motion.div>
 
           <h1 className="font-display text-[3.5rem] font-light leading-[0.92] md:text-7xl lg:text-[7.5rem]">
@@ -125,9 +135,21 @@ function Home() {
             transition={{ duration: 0.9, delay: 1.05 }}
             className="mt-10 max-w-md text-base leading-relaxed text-foreground/65"
           >
-            Um bistrô de bairro no Boulevard Center. Tropeiro no almoço,
-            hambúrguer artesanal e drinks à noite, feitos por quem gosta de
-            receber bem.
+            Onde a memória vira sabor e o tempo descansa no prato. Bistrô
+            surrealista no Boulevard Center: tropeiro de dia, hambúrguer e
+            drinks à noite.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.55 }}
+            transition={{ duration: 1, delay: 1.3 }}
+            className="mt-6 max-w-sm border-l-2 border-primary/60 pl-4 font-display text-sm italic text-foreground/70"
+          >
+            “Não tenha medo da perfeição — você nunca a alcançará.”
+            <span className="mt-1 block text-[10px] uppercase tracking-[0.4em] text-primary/70 not-italic">
+              — Salvador Dalí
+            </span>
           </motion.p>
 
           <motion.div
