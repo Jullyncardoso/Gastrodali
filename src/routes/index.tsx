@@ -24,6 +24,8 @@ import fachada from "@/assets/gallery-fachada.png";
 import neon from "@/assets/gallery-neon.png";
 import deck from "@/assets/gallery-deck.png";
 import mural from "@/assets/gallery-mural.png";
+import { MeltingClock } from "@/components/dali/MeltingClock";
+import { Ant, Mustache } from "@/components/dali/Ant";
 
 export const Route = createFileRoute("/")({
   component: Home,
