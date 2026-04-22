@@ -82,9 +82,6 @@ function Cardapio() {
                     : "border-transparent text-foreground/60 hover:border-border hover:text-primary"
                 }`}
               >
-                <span className="chapter-num mr-2 not-italic text-foreground/40">
-                  0{i + 1}
-                </span>
                 {c.title}
               </a>
             ))}
@@ -104,10 +101,8 @@ function Cardapio() {
             transition={{ duration: 0.7 }}
             className="scroll-mt-40"
           >
-            <div className="mb-12 flex items-baseline gap-6 border-b border-border pb-8">
-              <span className="chapter-num text-3xl md:text-5xl">
-                0{ci + 1}
-              </span>
+            <div className="mb-12 flex items-center gap-6 border-b border-border pb-8">
+              <div className="h-px w-12 bg-primary" />
               <div className="flex-1">
                 <h2 className="font-display text-4xl text-primary md:text-6xl">
                   {cat.title}
