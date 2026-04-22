@@ -4,14 +4,13 @@ import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import { menu } from "@/data/menu";
 import { useCart, formatBRL } from "@/context/CartContext";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/cardapio")({
   component: Cardapio,
   head: () => ({
     meta: [
-      { title: "Cardápio, Gastrô Dalí" },
+      { title: "Cardápio · Gastrô Dalí" },
       {
         name: "description",
         content:
@@ -32,115 +31,132 @@ function Cardapio() {
 
   return (
     <div className="relative">
-      {/* decorative orbs */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[40rem] overflow-hidden">
-        <div className="absolute left-1/4 top-20 h-96 w-96 rounded-full bg-secondary/15 blur-[120px]" />
-        <div className="absolute right-1/4 top-0 h-96 w-96 rounded-full bg-primary/10 blur-[120px]" />
-      </div>
-
-      <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
-        <motion.header
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-12 max-w-3xl"
-        >
-          <span className="inline-flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.45em] text-secondary">
-            <span className="h-px w-10 bg-secondary/70" /> Cardápio
-          </span>
-          <h1 className="mt-5 font-display text-5xl md:text-7xl">
-            Sabor autoral{" "}
-            <span className="italic text-primary">a cada garfada</span>
-          </h1>
-          <p className="mt-5 text-muted-foreground">
-            Toque em <span className="font-medium text-secondary">+</span> para
+      {/* Hero */}
+      <section className="relative border-b border-border px-6 pb-16 pt-32 md:px-12 lg:px-20">
+        <div className="absolute inset-0 -z-10 bg-grain opacity-30" />
+        <div className="absolute -left-32 top-32 -z-10 h-96 w-96 rounded-full bg-primary/10 blur-[140px]" />
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex items-center gap-3"
+          >
+            <div className="h-px w-12 bg-primary" />
+            <span className="eyebrow">N° 03 · O cardápio</span>
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-8 max-w-4xl font-display text-5xl leading-[0.95] md:text-8xl"
+          >
+            Sabor autoral
+            <br />
+            <em className="text-gold-shine">a cada garfada.</em>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-8 max-w-xl text-foreground/65"
+          >
+            Toque em <span className="font-medium text-primary">+</span> para
             montar seu pedido e finalize na aba "Pedido".
-          </p>
-        </motion.header>
+          </motion.p>
+        </div>
+      </section>
 
-        {/* Tabs */}
-        <div className="sticky top-20 z-20 -mx-4 mb-12 overflow-x-auto border-b border-border bg-background/90 px-4 backdrop-blur-xl">
-          <div className="flex gap-2 py-3">
-            {menu.map((c) => (
+      {/* Sticky tabs */}
+      <div className="sticky top-20 z-30 border-b border-border bg-background/90 backdrop-blur-xl">
+        <div className="mx-auto max-w-7xl overflow-x-auto px-6 md:px-12 lg:px-20">
+          <div className="flex gap-1 py-3">
+            {menu.map((c, i) => (
               <a
                 key={c.id}
                 href={`#${c.id}`}
                 onClick={() => setActive(c.id)}
-                className={`whitespace-nowrap rounded-full px-5 py-2 text-xs font-medium uppercase tracking-wider transition-all duration-300 ${
+                className={`whitespace-nowrap border px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] transition-all duration-300 ${
                   active === c.id
-                    ? "bg-primary text-primary-foreground shadow-md"
-                    : "text-foreground/70 hover:bg-secondary/15 hover:text-primary"
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-transparent text-foreground/60 hover:border-border hover:text-primary"
                 }`}
               >
+                <span className="chapter-num mr-2 not-italic text-foreground/40">
+                  0{i + 1}
+                </span>
                 {c.title}
               </a>
             ))}
           </div>
         </div>
+      </div>
 
-        <div className="space-y-20">
-          {menu.map((cat, ci) => (
-            <motion.section
-              key={cat.id}
-              id={cat.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7 }}
-              className="scroll-mt-40"
-            >
-              <div className="mb-8 flex items-baseline gap-4">
-                <span className="font-display text-2xl text-secondary/60">
-                  0{ci + 1}
-                </span>
-                <div>
-                  <h2 className="font-display text-4xl text-primary md:text-5xl">
-                    {cat.title}
-                  </h2>
-                  {cat.subtitle && (
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      {cat.subtitle}
-                    </p>
-                  )}
-                </div>
+      {/* Sections */}
+      <div className="mx-auto max-w-7xl space-y-24 px-6 py-16 md:px-12 lg:px-20">
+        {menu.map((cat, ci) => (
+          <motion.section
+            key={cat.id}
+            id={cat.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7 }}
+            className="scroll-mt-40"
+          >
+            <div className="mb-12 flex items-baseline gap-6 border-b border-border pb-8">
+              <span className="chapter-num text-3xl md:text-5xl">
+                0{ci + 1}
+              </span>
+              <div className="flex-1">
+                <h2 className="font-display text-4xl text-primary md:text-6xl">
+                  {cat.title}
+                </h2>
+                {cat.subtitle && (
+                  <p className="mt-2 text-sm text-foreground/55">
+                    {cat.subtitle}
+                  </p>
+                )}
               </div>
-              <div className="grid gap-4 md:grid-cols-2">
-                {cat.items.map((item, i) => (
-                  <motion.article
-                    key={item.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: (i % 6) * 0.05 }}
-                    className="group flex items-start justify-between gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-secondary/60 hover:shadow-[var(--shadow-gold)]"
-                  >
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-baseline justify-between gap-3">
-                        <h3 className="font-display text-xl text-primary md:text-2xl">
-                          {item.name}
-                        </h3>
-                        <span className="shrink-0 font-display text-lg font-medium text-secondary">
+            </div>
+            <div className="grid gap-px bg-border md:grid-cols-2">
+              {cat.items.map((item, i) => (
+                <motion.article
+                  key={item.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: (i % 6) * 0.05 }}
+                  className="group flex items-start justify-between gap-6 bg-background p-7 transition-colors hover:bg-muted/40"
+                >
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h3 className="font-display text-xl text-foreground md:text-2xl">
+                        {item.name}
+                      </h3>
+                      <div className="flex items-center gap-2">
+                        <div className="hidden h-px w-8 bg-border sm:block" />
+                        <span className="shrink-0 font-display text-lg text-primary">
                           {formatBRL(item.price)}
                         </span>
                       </div>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                        {item.description}
-                      </p>
                     </div>
-                    <Button
-                      size="icon"
-                      onClick={() => handleAdd(item.id, item.name)}
-                      aria-label={`Adicionar ${item.name}`}
-                      className="shrink-0 rounded-full transition-transform duration-300 group-hover:scale-110"
-                    >
-                      <Plus className="h-4 w-4" />
-                    </Button>
-                  </motion.article>
-                ))}
-              </div>
-            </motion.section>
-          ))}
-        </div>
+                    <p className="mt-2 text-sm leading-relaxed text-foreground/55">
+                      {item.description}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => handleAdd(item.id, item.name)}
+                    aria-label={`Adicionar ${item.name}`}
+                    className="flex h-10 w-10 shrink-0 items-center justify-center border border-primary/40 text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
+                  >
+                    <Plus className="h-4 w-4" />
+                  </button>
+                </motion.article>
+              ))}
+            </div>
+          </motion.section>
+        ))}
       </div>
     </div>
   );

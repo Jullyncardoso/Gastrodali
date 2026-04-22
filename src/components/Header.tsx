@@ -3,7 +3,6 @@ import { Link, useRouter } from "@tanstack/react-router";
 import { ShoppingBag, Menu as MenuIcon, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useCart } from "@/context/CartContext";
-import { Button } from "@/components/ui/button";
 
 type NavLink = { hash?: string; to?: string; label: string };
 
@@ -43,30 +42,30 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
         scrolled
-          ? "border-b border-border/70 bg-background/90 backdrop-blur-xl"
-          : "border-b border-transparent bg-background/40 backdrop-blur-md"
+          ? "border-b border-border bg-background/85 backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-8">
-        <Link to="/" className="flex items-center gap-3 group">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-12">
+        <Link to="/" className="group flex items-center gap-3">
           <img
             src={logo}
             alt="Gastrô Dalí"
-            className="h-12 w-12 object-contain transition-transform duration-500 group-hover:rotate-[8deg]"
+            className="h-10 w-10 object-contain transition-transform duration-500 group-hover:rotate-[10deg]"
           />
-          <span className="hidden font-display text-xl tracking-wide text-foreground sm:inline">
+          <span className="hidden font-body text-sm font-medium tracking-tight text-foreground sm:inline">
             Gastrô Dalí
           </span>
         </Link>
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center gap-10 lg:flex">
           {links.map((l) =>
             l.to ? (
               <Link
                 key={l.label}
                 to={l.to}
-                className="story-link text-sm font-medium tracking-wide text-foreground/75 transition-colors hover:text-primary"
+                className="text-[11px] font-medium uppercase tracking-[0.3em] text-foreground/70 transition-colors hover:text-primary"
                 activeProps={{ className: "text-primary" }}
               >
                 {l.label}
@@ -75,46 +74,45 @@ export function Header() {
               <button
                 key={l.label}
                 onClick={() => goToSection(l.hash!)}
-                className="story-link text-sm font-medium tracking-wide text-foreground/75 transition-colors hover:text-primary"
+                className="text-[11px] font-medium uppercase tracking-[0.3em] text-foreground/70 transition-colors hover:text-primary"
               >
                 {l.label}
               </button>
             )
           )}
         </nav>
-        <div className="flex items-center gap-2">
-          <Link to="/checkout">
-            <Button variant="default" size="sm" className="relative">
-              <ShoppingBag className="h-4 w-4" />
-              <span className="hidden sm:inline">Pedido</span>
-              {count > 0 && (
-                <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-secondary px-1 text-[10px] font-bold text-secondary-foreground shadow-md">
-                  {count}
-                </span>
-              )}
-            </Button>
+        <div className="flex items-center gap-3">
+          <Link
+            to="/checkout"
+            className="relative inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-primary-foreground transition-colors hover:bg-paper"
+          >
+            <ShoppingBag className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Pedido</span>
+            {count > 0 && (
+              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-secondary px-1 text-[10px] font-bold text-secondary-foreground shadow-md">
+                {count}
+              </span>
+            )}
           </Link>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden"
+          <button
+            className="text-foreground lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-label="Menu"
           >
             {open ? <X className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
-          </Button>
+          </button>
         </div>
       </div>
       {open && (
-        <div className="border-t border-border/60 bg-background lg:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col px-4 py-3">
+        <div className="border-t border-border bg-background lg:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col px-6 py-3">
             {links.map((l) =>
               l.to ? (
                 <Link
                   key={l.label}
                   to={l.to}
                   onClick={() => setOpen(false)}
-                  className="py-3 text-sm font-medium text-foreground/80 hover:text-primary"
+                  className="py-3 text-[11px] font-medium uppercase tracking-[0.3em] text-foreground/80 hover:text-primary"
                   activeProps={{ className: "text-primary" }}
                 >
                   {l.label}
@@ -123,7 +121,7 @@ export function Header() {
                 <button
                   key={l.label}
                   onClick={() => goToSection(l.hash!)}
-                  className="py-3 text-left text-sm font-medium text-foreground/80 hover:text-primary"
+                  className="py-3 text-left text-[11px] font-medium uppercase tracking-[0.3em] text-foreground/80 hover:text-primary"
                 >
                   {l.label}
                 </button>
