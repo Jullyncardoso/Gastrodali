@@ -1,22 +1,38 @@
 import * as React from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouter } from "@tanstack/react-router";
 import { ShoppingBag, Menu as MenuIcon, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useCart } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
 
-const links = [
-  { to: "/", label: "Início" },
+type NavLink = { hash?: string; to?: string; label: string };
+
+const links: NavLink[] = [
+  { hash: "assinaturas", label: "Assinaturas" },
   { to: "/cardapio", label: "Cardápio" },
-  { to: "/historia", label: "Nossa História" },
-  { to: "/galeria", label: "Galeria" },
-  { to: "/avaliacoes", label: "Avaliações" },
-  { to: "/visite", label: "Visite-nos" },
-] as const;
+  { hash: "historia", label: "História" },
+  { hash: "galeria", label: "Galeria" },
+  { hash: "avaliacoes", label: "Avaliações" },
+  { hash: "visite", label: "Visite" },
+];
 
 export function Header() {
   const { count } = useCart();
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
+
+  const goToSection = (hash: string) => {
+    setOpen(false);
+    const scroll = () => {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    if (router.state.location.pathname !== "/") {
+      router.navigate({ to: "/" }).then(() => setTimeout(scroll, 80));
+    } else {
+      scroll();
+    }
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-xl">
@@ -25,17 +41,27 @@ export function Header() {
           <img src={logo} alt="Gastrô Dalí" className="h-12 w-12 rounded-full object-cover ring-2 ring-primary/40" />
           <span className="hidden font-display text-lg tracking-wide text-foreground sm:inline">Gastrô Dalí</span>
         </Link>
-        <nav className="hidden items-center gap-8 lg:flex">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className="text-sm font-medium tracking-wide text-foreground/80 transition-colors hover:text-primary"
-              activeProps={{ className: "text-primary" }}
-            >
-              {l.label}
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-7 lg:flex">
+          {links.map((l) =>
+            l.to ? (
+              <Link
+                key={l.label}
+                to={l.to}
+                className="text-sm font-medium tracking-wide text-foreground/80 transition-colors hover:text-primary"
+                activeProps={{ className: "text-primary" }}
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <button
+                key={l.label}
+                onClick={() => goToSection(l.hash!)}
+                className="text-sm font-medium tracking-wide text-foreground/80 transition-colors hover:text-primary"
+              >
+                {l.label}
+              </button>
+            )
+          )}
         </nav>
         <div className="flex items-center gap-2">
           <Link to="/checkout">
@@ -63,17 +89,27 @@ export function Header() {
       {open && (
         <div className="border-t border-border/60 bg-background lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col px-4 py-3">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                onClick={() => setOpen(false)}
-                className="py-3 text-sm font-medium text-foreground/80 hover:text-primary"
-                activeProps={{ className: "text-primary" }}
-              >
-                {l.label}
-              </Link>
-            ))}
+            {links.map((l) =>
+              l.to ? (
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  onClick={() => setOpen(false)}
+                  className="py-3 text-sm font-medium text-foreground/80 hover:text-primary"
+                  activeProps={{ className: "text-primary" }}
+                >
+                  {l.label}
+                </Link>
+              ) : (
+                <button
+                  key={l.label}
+                  onClick={() => goToSection(l.hash!)}
+                  className="py-3 text-left text-sm font-medium text-foreground/80 hover:text-primary"
+                >
+                  {l.label}
+                </button>
+              )
+            )}
           </nav>
         </div>
       )}
