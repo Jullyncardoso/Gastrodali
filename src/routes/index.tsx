@@ -240,8 +240,8 @@ function Home() {
           >
             <SectionEyebrow>Nossa história</SectionEyebrow>
             <h2 className="mt-5 font-display text-4xl leading-[1.05] md:text-6xl">
-              Cada prato, uma{" "}
-              <span className="italic text-primary">tela em branco</span>
+              Cada prato,{" "}
+              <span className="italic text-primary">uma assinatura</span>
             </h2>
             <p className="mt-6 max-w-md text-foreground/75">
               O Gastrô nasceu da vontade de transformar refeições cotidianas em
@@ -325,7 +325,7 @@ function Home() {
           <SectionEyebrow>Galeria</SectionEyebrow>
           <h2 className="mt-5 font-display text-4xl md:text-6xl">
             Pequenas pausas{" "}
-            <span className="italic text-primary">surreais</span>
+            <span className="italic text-primary">no nosso canto</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
             Detalhes do nosso ambiente, da fachada e do bar.
