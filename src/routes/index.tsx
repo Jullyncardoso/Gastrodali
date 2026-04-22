@@ -99,7 +99,7 @@ function Home() {
             transition={{ duration: 1, delay: 0.2 }}
             className="mb-10"
           >
-            <Eyebrow>Muriaé · MG · Inspirado em Dalí</Eyebrow>
+            <Eyebrow>Muriaé · MG</Eyebrow>
           </motion.div>
 
           <motion.div
