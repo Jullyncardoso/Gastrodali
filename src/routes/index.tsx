@@ -24,6 +24,8 @@ import fachada from "@/assets/gallery-fachada.png";
 import neon from "@/assets/gallery-neon.png";
 import deck from "@/assets/gallery-deck.png";
 import mural from "@/assets/gallery-mural.png";
+import { MeltingClock } from "@/components/dali/MeltingClock";
+import { Ant, Mustache } from "@/components/dali/Ant";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -88,7 +90,17 @@ function Home() {
             transition={{ duration: 1, delay: 0.2 }}
             className="mb-10"
           >
-            <Eyebrow>Muriaé · MG · Est. 2023</Eyebrow>
+            <Eyebrow>Muriaé · MG · Inspirado em Dalí</Eyebrow>
+          </motion.div>
+
+          {/* Surrealist mustache mark */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
+            animate={{ opacity: 0.85, scale: 1, rotate: 0 }}
+            transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 -ml-1"
+          >
+            <Mustache className="h-7 w-24 text-primary animate-sway" />
           </motion.div>
 
           <h1 className="font-display text-[3.5rem] font-light leading-[0.92] md:text-7xl lg:text-[7.5rem]">
@@ -123,9 +135,21 @@ function Home() {
             transition={{ duration: 0.9, delay: 1.05 }}
             className="mt-10 max-w-md text-base leading-relaxed text-foreground/65"
           >
-            Um bistrô de bairro no Boulevard Center. Tropeiro no almoço,
-            hambúrguer artesanal e drinks à noite, feitos por quem gosta de
-            receber bem.
+            Onde a memória vira sabor e o tempo descansa no prato. Bistrô
+            surrealista no Boulevard Center: tropeiro de dia, hambúrguer e
+            drinks à noite.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.55 }}
+            transition={{ duration: 1, delay: 1.3 }}
+            className="mt-6 max-w-sm border-l-2 border-primary/60 pl-4 font-display text-sm italic text-foreground/70"
+          >
+            “Não tenha medo da perfeição — você nunca a alcançará.”
+            <span className="mt-1 block text-[10px] uppercase tracking-[0.4em] text-primary/70 not-italic">
+              — Salvador Dalí
+            </span>
           </motion.p>
 
           <motion.div
@@ -177,6 +201,16 @@ function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30" />
           <div className="absolute inset-0 bg-grain opacity-30" />
 
+          {/* Floating melting clock — Dalí signature */}
+          <motion.div
+            initial={{ opacity: 0, y: -30, rotate: -12 }}
+            animate={{ opacity: 1, y: 0, rotate: -8 }}
+            transition={{ duration: 1.6, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute left-6 top-10 z-10 hidden md:block"
+          >
+            <MeltingClock className="h-40 w-48 text-primary animate-melt drop-shadow-2xl" />
+          </motion.div>
+
           {/* caption */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -184,13 +218,26 @@ function Home() {
             transition={{ duration: 1, delay: 1.4 }}
             className="absolute bottom-10 right-6 z-10 max-w-[14rem] text-right md:right-10"
           >
-            <div className="eyebrow mb-2">A casa</div>
+            <div className="eyebrow mb-2">A casa onírica</div>
             <div className="font-display text-3xl italic text-foreground">
               Boulevard Center
             </div>
           </motion.div>
         </motion.div>
       </section>
+
+      {/* ================= MARCHING ANTS — surrealist divider ================= */}
+      <div className="relative h-10 overflow-hidden border-y border-border bg-background">
+        <div className="pointer-events-none absolute inset-0 flex items-center text-primary/35">
+          <div className="flex gap-10 animate-ant-march whitespace-nowrap">
+            {Array.from({ length: 14 }).map((_, i) => (
+              <Ant key={i} className="h-3 w-6 shrink-0" />
+            ))}
+          </div>
+        </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
+      </div>
 
       {/* ================= STATS BAR ================= */}
       <section className="border-y border-border">
@@ -237,14 +284,22 @@ function Home() {
               className="md:col-span-5"
             >
               <h2 className="font-display text-5xl leading-[1] md:text-7xl">
-                Cada prato,
+                A persistência
                 <br />
-                <em className="text-gold-shine">uma assinatura.</em>
+                <em className="text-gold-shine">do sabor.</em>
               </h2>
               <p className="mt-8 max-w-md text-foreground/75">
-                Técnica de bistrô, ingredientes locais e o afeto da mesa
-                mineira. Sem firulas, com cuidado.
+                Inspirados em Salvador Dalí, fazemos da mesa um pequeno
+                manifesto: técnica de bistrô, ingrediente local e um toque de
+                imaginação em cada prato.
               </p>
+
+              <div className="mt-10 flex items-center gap-4 text-primary/70">
+                <Mustache className="h-6 w-20 animate-sway" />
+                <span className="font-display text-sm italic">
+                  cozinha como obra
+                </span>
+              </div>
             </motion.div>
 
             <div className="space-y-6 md:col-span-7">
@@ -631,6 +686,28 @@ function Home() {
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -right-40 top-1/2 -z-10 h-[34rem] w-[34rem] -translate-y-1/2 rounded-full bg-primary/15 blur-[160px]"
         />
+
+        {/* Surreal floating clocks */}
+        <motion.div
+          aria-hidden
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.55 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className="pointer-events-none absolute left-6 top-12 hidden md:block"
+        >
+          <MeltingClock className="h-28 w-32 text-primary animate-melt" time="11:55" />
+        </motion.div>
+        <motion.div
+          aria-hidden
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.4 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.2 }}
+          className="pointer-events-none absolute bottom-12 right-10 hidden rotate-12 md:block"
+        >
+          <MeltingClock className="h-24 w-28 text-primary animate-float-slow" time="00:07" />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

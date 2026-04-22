@@ -136,6 +136,32 @@
 .animate-drift { animation: drift 16s ease-in-out infinite; }
 .animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
 
+/* Surrealist motion */
+@keyframes melt {
+  0%, 100% { transform: translateY(0) skewX(0deg) scaleY(1); }
+  50% { transform: translateY(6px) skewX(-2deg) scaleY(1.04); }
+}
+@keyframes ant-march {
+  0% { transform: translateX(-20%) rotate(0deg); }
+  100% { transform: translateX(120%) rotate(0deg); }
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.animate-melt { animation: melt 7s ease-in-out infinite; transform-origin: top center; }
+.animate-ant-march { animation: ant-march 22s linear infinite; }
+.animate-sway { animation: sway 9s ease-in-out infinite; transform-origin: center; }
+
+/* Dotted surrealist horizon */
+.dali-horizon {
+  background-image: linear-gradient(to bottom,
+    transparent 0%,
+    transparent 60%,
+    color-mix(in oklab, var(--burgundy) 35%, transparent) 100%
+  );
+}
+
 .text-gold-shine {
   background: linear-gradient(
     100deg,
