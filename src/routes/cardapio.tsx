@@ -49,8 +49,8 @@ function Cardapio() {
             <span className="h-px w-10 bg-secondary/70" /> Cardápio
           </span>
           <h1 className="mt-5 font-display text-5xl md:text-7xl">
-            Surreal em cada{" "}
-            <span className="italic text-primary">garfada</span>
+            Sabor autoral{" "}
+            <span className="italic text-primary">a cada garfada</span>
           </h1>
           <p className="mt-5 text-muted-foreground">
             Toque em <span className="font-medium text-secondary">+</span> para

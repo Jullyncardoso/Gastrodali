@@ -103,7 +103,7 @@ function Checkout() {
       <div className="mx-auto max-w-2xl px-4 py-24 text-center md:px-8">
         <ShoppingBag className="mx-auto h-12 w-12 text-primary" />
         <h1 className="mt-4 font-display text-3xl">Seu pedido está vazio</h1>
-        <p className="mt-2 text-muted-foreground">Comece pelo nosso cardápio surreal.</p>
+        <p className="mt-2 text-muted-foreground">Comece pelo nosso cardápio.</p>
         <Link to="/cardapio" className="mt-6 inline-block">
           <Button size="lg">Ver cardápio</Button>
         </Link>
