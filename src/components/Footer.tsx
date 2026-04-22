@@ -7,7 +7,10 @@ export function Footer() {
     <footer className="mt-24 border-t border-border/60 bg-card">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-3 md:px-8">
         <div>
-          <img src={logo} alt="Gastrô Dalí" className="h-14 w-auto" />
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="Gastrô Dalí" className="h-14 w-14 rounded-full object-cover ring-2 ring-primary/40" />
+            <span className="font-display text-2xl">Gastrô Dalí</span>
+          </div>
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
             Gastronomia surreal no coração de Muriaé. Onde cada prato é uma obra de arte.
           </p>

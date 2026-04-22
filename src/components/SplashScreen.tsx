@@ -38,7 +38,7 @@ export function SplashScreen() {
             <motion.img
               src={logo}
               alt="Gastrô Dalí"
-              className="h-40 w-auto md:h-56"
+              className="h-44 w-44 rounded-full object-cover shadow-2xl ring-4 ring-primary/40 md:h-56 md:w-56"
               initial={{ filter: "blur(8px)" }}
               animate={{ filter: "blur(0px)" }}
               transition={{ duration: 1 }}

@@ -5,6 +5,10 @@ import tropeiro from "@/assets/gallery-tropeiro.png";
 import bar from "@/assets/gallery-bar.png";
 import batata from "@/assets/gallery-batata.png";
 import ambiente from "@/assets/gallery-ambiente.png";
+import picanha from "@/assets/gallery-picanha.png";
+import fachada from "@/assets/gallery-fachada.png";
+import neon from "@/assets/gallery-neon.png";
+import iscas from "@/assets/gallery-iscas.png";
 
 export const Route = createFileRoute("/galeria")({
   component: Galeria,
@@ -19,7 +23,11 @@ export const Route = createFileRoute("/galeria")({
 
 const photos = [
   { src: ambiente, alt: "Ambiente noturno do Gastrô Dalí", span: "md:col-span-2 md:row-span-2" },
+  { src: picanha, alt: "Picanha grelhada com fritas, arroz e feijão tropeiro" },
   { src: burger, alt: "Hambúrguer artesanal com cebola crispy" },
+  { src: neon, alt: "Letreiro neon com frase de Dalí e relógio derretido", span: "md:row-span-2" },
+  { src: fachada, alt: "Fachada do Gastrô Dalí à noite com a placa iluminada" },
+  { src: iscas, alt: "Iscas de alcatra com fritas e maionese verde" },
   { src: tropeiro, alt: "Petisco com batata canoa e tiras de alcatra" },
   { src: bar, alt: "Drinks autorais no bar" },
   { src: batata, alt: "Batata canoa com maionese e chopp gelado" },

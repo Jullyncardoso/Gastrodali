@@ -22,7 +22,8 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-8">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Gastrô Dalí" className="h-12 w-auto" />
+          <img src={logo} alt="Gastrô Dalí" className="h-12 w-12 rounded-full object-cover ring-2 ring-primary/40" />
+          <span className="hidden font-display text-lg tracking-wide text-foreground sm:inline">Gastrô Dalí</span>
         </Link>
         <nav className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (
