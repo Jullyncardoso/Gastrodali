@@ -48,14 +48,14 @@ export function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-12">
-        <Link to="/" className="group flex items-center gap-3">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between pl-2 pr-6 md:pl-4 md:pr-12">
+        <Link to="/" className="group -ml-2 flex items-center gap-2 md:-ml-4">
           <img
             src={logo}
             alt="Gastrô Dalí"
-            className="h-10 w-10 object-contain transition-transform duration-500 group-hover:rotate-[10deg]"
+            className="h-12 w-12 object-contain transition-transform duration-500 group-hover:rotate-[10deg] md:h-14 md:w-14"
           />
-          <span className="hidden font-body text-sm font-medium tracking-tight text-foreground sm:inline">
+          <span className="font-display text-base font-medium tracking-tight text-foreground sm:text-lg">
             Gastrô Dalí
           </span>
         </Link>
