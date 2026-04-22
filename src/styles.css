@@ -159,6 +159,33 @@
 .animate-ant-march { animation: ant-march 22s linear infinite; }
 .animate-sway { animation: sway 9s ease-in-out infinite; transform-origin: center; }
 
+/* Neon flicker for Dalí-style signs */
+@keyframes neon-flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 4px var(--neon-orange),
+      0 0 11px var(--neon-orange),
+      0 0 19px var(--neon-orange),
+      0 0 40px color-mix(in oklab, var(--neon-orange) 70%, transparent),
+      0 0 80px color-mix(in oklab, var(--neon-orange) 50%, transparent);
+    opacity: 1;
+  }
+  20%, 24%, 55% { text-shadow: none; opacity: 0.7; }
+}
+.text-neon { color: var(--neon-orange); animation: neon-flicker 4s infinite; }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 40s linear infinite; }
+
+@keyframes ken-burns {
+  0% { transform: scale(1) translate(0,0); }
+  100% { transform: scale(1.12) translate(-2%, -2%); }
+}
+.animate-ken-burns { animation: ken-burns 20s ease-in-out infinite alternate; }
+
 /* Dotted surrealist horizon */
 .dali-horizon {
   background-image: linear-gradient(to bottom,
