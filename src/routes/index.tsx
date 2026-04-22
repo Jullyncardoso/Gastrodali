@@ -284,14 +284,22 @@ function Home() {
               className="md:col-span-5"
             >
               <h2 className="font-display text-5xl leading-[1] md:text-7xl">
-                Cada prato,
+                A persistência
                 <br />
-                <em className="text-gold-shine">uma assinatura.</em>
+                <em className="text-gold-shine">do sabor.</em>
               </h2>
               <p className="mt-8 max-w-md text-foreground/75">
-                Técnica de bistrô, ingredientes locais e o afeto da mesa
-                mineira. Sem firulas, com cuidado.
+                Inspirados em Salvador Dalí, fazemos da mesa um pequeno
+                manifesto: técnica de bistrô, ingrediente local e um toque de
+                imaginação em cada prato.
               </p>
+
+              <div className="mt-10 flex items-center gap-4 text-primary/70">
+                <Mustache className="h-6 w-20 animate-sway" />
+                <span className="font-display text-sm italic">
+                  cozinha como obra
+                </span>
+              </div>
             </motion.div>
 
             <div className="space-y-6 md:col-span-7">
@@ -678,6 +686,27 @@ function Home() {
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute -right-40 top-1/2 -z-10 h-[34rem] w-[34rem] -translate-y-1/2 rounded-full bg-primary/15 blur-[160px]"
         />
+
+        {/* Surreal floating clocks */}
+        <motion.div
+          aria-hidden
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.55 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className="pointer-events-none absolute left-6 top-12 hidden md:block"
+        >
+          <MeltingClock className="h-28 w-32 text-primary animate-melt" time="11:55" />
+        </motion.div>
+        <motion.div
+          aria-hidden
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.4 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.2 }}
+          className="pointer-events-none absolute bottom-12 right-10 hidden rotate-12 md:block"
+        >
+          <MeltingClock className="h-24 w-28 text-primary animate-float-slow" time="00:07" />
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
