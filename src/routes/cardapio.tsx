@@ -51,9 +51,9 @@ function Cardapio() {
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="mt-8 max-w-4xl font-display text-5xl leading-[0.95] md:text-8xl"
           >
-            Sabor autoral
+            O sabor que
             <br />
-            <em className="text-gold-shine">a cada garfada.</em>
+            <em className="text-gold-shine">vira saudade.</em>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
