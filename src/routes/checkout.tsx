@@ -16,7 +16,7 @@ export const Route = createFileRoute("/checkout")({
   component: Checkout,
   head: () => ({
     meta: [
-      { title: "Finalizar Pedido — Gastrô Dalí" },
+      { title: "Finalizar Pedido, Gastrô Dalí" },
       { name: "description", content: "Conclua seu pedido online no Gastrô Dalí." },
     ],
   }),
