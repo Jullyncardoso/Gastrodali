@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Gastrô Dalí, Gastronomia surreal em Muriaé/MG" },
+      { title: "Gastrô Dalí, Cozinha autoral em Muriaé/MG" },
       {
         name: "description",
         content:
@@ -274,7 +274,7 @@ function Home() {
               {
                 year: "Janeiro 2023",
                 title: "O começo",
-                text: "O Gastrô Dalí nasceu com o desejo de trazer para Muriaé uma gastronomia que foge do óbvio. Inspirados pelo surrealismo, acreditamos que comer bem é arte que estimula todos os sentidos.",
+                text: "O Gastrô Dalí nasceu com a vontade de trazer para Muriaé uma cozinha que foge do óbvio. Técnica de bistrô, ingredientes locais e o afeto da mesa mineira em cada prato.",
               },
               {
                 year: "2024",
@@ -283,8 +283,8 @@ function Home() {
               },
               {
                 year: "Hoje",
-                title: "Um momento surreal",
-                text: "Cada prato é uma tela em branco onde combinamos ingredientes selecionados e um toque de ousadia. Almoço em família, happy hour ou um lanche especial: existimos para transformar refeições em momentos.",
+                title: "Casa cheia",
+                text: "Cada prato é fruto de testes, ingredientes selecionados e um toque de ousadia. Almoço em família, happy hour ou jantar a dois: existimos para transformar refeições em momentos.",
               },
             ].map((b, i) => (
               <motion.div
@@ -457,7 +457,7 @@ function Home() {
           className="mb-14 flex flex-wrap items-end justify-between gap-6"
         >
           <div className="max-w-2xl">
-            <SectionEyebrow>Vozes surreais</SectionEyebrow>
+            <SectionEyebrow>Vozes da casa</SectionEyebrow>
             <h2 className="mt-5 font-display text-4xl md:text-6xl">
               O que <span className="italic text-primary">dizem</span> de nós
             </h2>
@@ -528,7 +528,7 @@ function Home() {
             <SectionEyebrow>Encontre o Dalí</SectionEyebrow>
             <h2 className="mt-5 font-display text-4xl md:text-6xl">
               A coordenada exata da sua próxima{" "}
-              <span className="italic text-primary">refeição surreal</span>
+              <span className="italic text-primary">boa refeição</span>
             </h2>
           </motion.div>
 
@@ -664,7 +664,7 @@ function Home() {
               <Star className="h-7 w-7 text-secondary" />
               <h2 className="mt-4 font-display text-3xl md:text-5xl">
                 Venha viver uma{" "}
-                <span className="italic text-primary">noite surreal</span>
+                <span className="italic text-primary">noite memorável</span>
               </h2>
               <p className="mt-4 max-w-xl text-foreground/80">
                 Reserve sua mesa, peça pelo site ou apareça no Boulevard Center.
