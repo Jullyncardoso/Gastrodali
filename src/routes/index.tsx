@@ -50,10 +50,10 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Chapter({ n, title }: { n: string; title: string }) {
+function Chapter({ title }: { n?: string; title: string }) {
   return (
     <div className="mb-12 flex items-baseline gap-6">
-      <span className="chapter-num text-3xl md:text-4xl">{n}</span>
+      <div className="h-px w-12 bg-primary" />
       <span className="eyebrow">{title}</span>
       <div className="h-px flex-1 bg-border" />
     </div>
@@ -184,9 +184,9 @@ function Home() {
             transition={{ duration: 1, delay: 1.4 }}
             className="absolute bottom-10 right-6 z-10 max-w-[14rem] text-right md:right-10"
           >
-            <div className="eyebrow mb-2">Capítulo 01</div>
+            <div className="eyebrow mb-2">A casa</div>
             <div className="font-display text-3xl italic text-foreground">
-              A casa
+              Boulevard Center
             </div>
           </motion.div>
         </motion.div>
@@ -273,7 +273,7 @@ function Home() {
                   transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
                   className="group grid grid-cols-[auto_1fr] gap-8 border border-border/60 bg-background/70 p-7 backdrop-blur-md transition-all duration-500 hover:border-primary/60 hover:bg-background/85"
                 >
-                  <div className="chapter-num text-3xl">0{i + 1}</div>
+                  <div className="font-display text-2xl italic text-primary/60">0{i + 1}</div>
                   <div>
                     <div className="eyebrow mb-3">{b.year}</div>
                     <h3 className="font-display text-2xl text-foreground md:text-3xl">
@@ -328,7 +328,7 @@ function Home() {
                 <em className="text-gold-shine">memória.</em>
               </h2>
               <p className="mt-8 max-w-xl text-foreground/70">
-                Sete capítulos de sabor: tropeiro executivo, clássicos do dia,
+                Sete famílias de sabor: tropeiro executivo, clássicos do dia,
                 saladas, petiscos pra dividir, especiais da casa, sandubas
                 artesanais e bebidas.
               </p>
@@ -379,7 +379,7 @@ function Home() {
                     : undefined
                 }
               >
-                <div className="chapter-num mb-3 text-sm">0{i + 1}</div>
+                <div className="mb-3 font-display text-sm italic text-primary/60">0{i + 1}</div>
                 <div className="font-display text-2xl text-foreground">{c.name}</div>
                 <div className="mt-1 text-xs uppercase tracking-[0.2em] text-foreground/45">
                   {c.desc}
@@ -484,7 +484,7 @@ function Home() {
           >
             Onde o seu próximo
             <br />
-            <em className="text-gold-shine">capítulo começa.</em>
+            <em className="text-gold-shine">encontro acontece.</em>
           </motion.h2>
 
           <div className="grid gap-8 md:grid-cols-12">
@@ -589,7 +589,7 @@ function Home() {
                       className="flex items-baseline justify-between gap-6 py-5"
                     >
                       <div className="flex items-baseline gap-4">
-                        <span className="chapter-num text-sm not-italic">
+                        <span className="font-display text-sm italic text-primary/50">
                           0{i + 1}
                         </span>
                         <span className="font-display text-xl text-foreground md:text-2xl">
