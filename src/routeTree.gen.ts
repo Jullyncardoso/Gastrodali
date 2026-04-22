@@ -9,8 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VisiteRouteImport } from './routes/visite'
+import { Route as PedidoConfirmadoRouteImport } from './routes/pedido-confirmado'
+import { Route as HistoriaRouteImport } from './routes/historia'
+import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as CardapioRouteImport } from './routes/cardapio'
+import { Route as AvaliacoesRouteImport } from './routes/avaliacoes'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VisiteRoute = VisiteRouteImport.update({
+  id: '/visite',
+  path: '/visite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PedidoConfirmadoRoute = PedidoConfirmadoRouteImport.update({
+  id: '/pedido-confirmado',
+  path: '/pedido-confirmado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoriaRoute = HistoriaRouteImport.update({
+  id: '/historia',
+  path: '/historia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CardapioRoute = CardapioRouteImport.update({
+  id: '/cardapio',
+  path: '/cardapio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AvaliacoesRoute = AvaliacoesRouteImport.update({
+  id: '/avaliacoes',
+  path: '/avaliacoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +61,130 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/avaliacoes': typeof AvaliacoesRoute
+  '/cardapio': typeof CardapioRoute
+  '/checkout': typeof CheckoutRoute
+  '/galeria': typeof GaleriaRoute
+  '/historia': typeof HistoriaRoute
+  '/pedido-confirmado': typeof PedidoConfirmadoRoute
+  '/visite': typeof VisiteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/avaliacoes': typeof AvaliacoesRoute
+  '/cardapio': typeof CardapioRoute
+  '/checkout': typeof CheckoutRoute
+  '/galeria': typeof GaleriaRoute
+  '/historia': typeof HistoriaRoute
+  '/pedido-confirmado': typeof PedidoConfirmadoRoute
+  '/visite': typeof VisiteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/avaliacoes': typeof AvaliacoesRoute
+  '/cardapio': typeof CardapioRoute
+  '/checkout': typeof CheckoutRoute
+  '/galeria': typeof GaleriaRoute
+  '/historia': typeof HistoriaRoute
+  '/pedido-confirmado': typeof PedidoConfirmadoRoute
+  '/visite': typeof VisiteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/avaliacoes'
+    | '/cardapio'
+    | '/checkout'
+    | '/galeria'
+    | '/historia'
+    | '/pedido-confirmado'
+    | '/visite'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/avaliacoes'
+    | '/cardapio'
+    | '/checkout'
+    | '/galeria'
+    | '/historia'
+    | '/pedido-confirmado'
+    | '/visite'
+  id:
+    | '__root__'
+    | '/'
+    | '/avaliacoes'
+    | '/cardapio'
+    | '/checkout'
+    | '/galeria'
+    | '/historia'
+    | '/pedido-confirmado'
+    | '/visite'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AvaliacoesRoute: typeof AvaliacoesRoute
+  CardapioRoute: typeof CardapioRoute
+  CheckoutRoute: typeof CheckoutRoute
+  GaleriaRoute: typeof GaleriaRoute
+  HistoriaRoute: typeof HistoriaRoute
+  PedidoConfirmadoRoute: typeof PedidoConfirmadoRoute
+  VisiteRoute: typeof VisiteRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/visite': {
+      id: '/visite'
+      path: '/visite'
+      fullPath: '/visite'
+      preLoaderRoute: typeof VisiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pedido-confirmado': {
+      id: '/pedido-confirmado'
+      path: '/pedido-confirmado'
+      fullPath: '/pedido-confirmado'
+      preLoaderRoute: typeof PedidoConfirmadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/historia': {
+      id: '/historia'
+      path: '/historia'
+      fullPath: '/historia'
+      preLoaderRoute: typeof HistoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cardapio': {
+      id: '/cardapio'
+      path: '/cardapio'
+      fullPath: '/cardapio'
+      preLoaderRoute: typeof CardapioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/avaliacoes': {
+      id: '/avaliacoes'
+      path: '/avaliacoes'
+      fullPath: '/avaliacoes'
+      preLoaderRoute: typeof AvaliacoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +197,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AvaliacoesRoute: AvaliacoesRoute,
+  CardapioRoute: CardapioRoute,
+  CheckoutRoute: CheckoutRoute,
+  GaleriaRoute: GaleriaRoute,
+  HistoriaRoute: HistoriaRoute,
+  PedidoConfirmadoRoute: PedidoConfirmadoRoute,
+  VisiteRoute: VisiteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
