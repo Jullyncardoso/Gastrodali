@@ -65,49 +65,48 @@ function Home() {
   return (
     <div className="overflow-hidden">
       {/* ============== HERO ============== */}
-      <section ref={heroRef} className="relative isolate min-h-[100vh] bg-background">
-        {/* soft cream gradient backdrop */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-cream via-background to-background" />
-
-        {/* photo on the right side, soft blended */}
-        <motion.div
-          style={{ y: heroY }}
-          className="absolute right-0 top-0 -z-10 hidden h-full w-1/2 lg:block"
-        >
+      <section ref={heroRef} className="relative isolate min-h-[100vh] overflow-hidden bg-[var(--ink)] text-primary-foreground">
+        {/* Background image with deep tint */}
+        <motion.div style={{ y: heroY }} className="absolute inset-0 -z-10">
           <img
             src={fachada}
             alt="Fachada do Gastrô Dalí"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-background/30" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--ink)]/95 via-[var(--ink)]/80 to-[var(--burgundy)]/85" />
+          <div className="absolute inset-0 bg-grain opacity-[0.18]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_30%,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
         </motion.div>
 
-        {/* floating decorative orbs */}
+        {/* Gold orbs */}
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-secondary/20 blur-[140px] animate-shimmer" />
-          <div className="absolute right-1/3 bottom-0 h-96 w-96 rounded-full bg-primary/10 blur-[120px] animate-shimmer" />
+          <div className="absolute -left-32 top-1/4 h-[34rem] w-[34rem] rounded-full bg-secondary/25 blur-[160px] animate-shimmer" />
+          <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-secondary/20 blur-[140px] animate-drift" />
         </div>
 
-        <div className="relative mx-auto grid min-h-[100vh] max-w-7xl grid-cols-1 items-center gap-10 px-4 py-24 md:px-8 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="relative mx-auto grid min-h-[100vh] max-w-7xl grid-cols-1 items-center gap-10 px-4 py-24 md:px-8 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="flex items-center gap-3"
             >
-              <SectionEyebrow>Muriaé · Minas Gerais · Desde 2023</SectionEyebrow>
+              <span className="h-px w-10 bg-secondary" />
+              <span className="text-[10px] font-medium uppercase tracking-[0.5em] text-secondary">
+                Muriaé · MG · Est. 2023
+              </span>
             </motion.div>
 
-            <h1 className="mt-7 max-w-3xl font-display text-5xl leading-[1.02] md:text-7xl lg:text-[5.5rem]">
-              {"Comer bem é uma".split(" ").map((w, i) => (
+            <h1 className="mt-8 font-display text-5xl leading-[0.98] md:text-7xl lg:text-[6rem]">
+              {"Cozinha autoral".split(" ").map((w, i) => (
                 <motion.span
                   key={i}
-                  initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                  initial={{ opacity: 0, y: 50, filter: "blur(12px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{
-                    duration: 0.9,
-                    delay: 0.2 + i * 0.09,
+                    duration: 1,
+                    delay: 0.3 + i * 0.1,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className="mr-3 inline-block"
@@ -116,12 +115,12 @@ function Home() {
                 </motion.span>
               ))}
               <motion.span
-                initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+                initial={{ opacity: 0, y: 50, filter: "blur(12px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 1.1, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="block italic text-shine"
+                className="block italic text-gold-shine"
               >
-                arte surreal.
+                com alma mineira.
               </motion.span>
             </h1>
 
@@ -129,11 +128,10 @@ function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 1 }}
-              className="mt-8 max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg"
+              className="mt-8 max-w-xl text-base leading-relaxed text-primary-foreground/80 md:text-lg"
             >
-              Inspirados por Salvador Dalí, transformamos cada prato em uma tela em
-              branco. Do almoço executivo aos hambúrgueres artesanais que dão vida
-              às nossas noites no Boulevard Center.
+              Tropeiro no almoço, hambúrguer artesanal e drinks à noite. Um bistrô
+              de bairro no Boulevard Center, feito por quem gosta de receber bem.
             </motion.p>
 
             <motion.div
@@ -143,7 +141,11 @@ function Home() {
               className="mt-12 flex flex-wrap items-center gap-4"
             >
               <Link to="/cardapio">
-                <Button size="lg" className="group h-12 px-8 text-base shadow-[var(--shadow-elegant)]">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="group h-12 px-8 text-base shadow-[var(--shadow-gold)]"
+                >
                   Ver cardápio{" "}
                   <ArrowRight className="ml-1 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -152,7 +154,7 @@ function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="h-12 border-primary/30 bg-background/60 px-8 text-base backdrop-blur hover:bg-primary hover:text-primary-foreground"
+                  className="h-12 border-primary-foreground/30 bg-transparent px-8 text-base text-primary-foreground hover:bg-primary-foreground hover:text-primary"
                 >
                   Fazer pedido
                 </Button>
@@ -160,11 +162,11 @@ function Home() {
             </motion.div>
           </div>
 
-          {/* Logo medallion (mobile + as visual anchor) */}
+          {/* Logo medallion */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             style={{ rotate: logoRot, scale: logoScale }}
             className="relative mx-auto flex aspect-square w-full max-w-md items-center justify-center"
           >
@@ -173,23 +175,24 @@ function Home() {
                 <defs>
                   <path
                     id="circlePath"
-                    d="M 100, 100 m -85, 0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0"
+                    d="M 100, 100 m -88, 0 a 88,88 0 1,1 176,0 a 88,88 0 1,1 -176,0"
                   />
                 </defs>
-                <text className="fill-primary/60 text-[8.5px] tracking-[0.5em] font-body uppercase">
+                <text className="fill-secondary/80 text-[7.5px] tracking-[0.55em] font-body uppercase">
                   <textPath href="#circlePath">
-                    Gastrô Dalí · Surreal · Autoral · Muriaé MG · Desde 2023 ·
+                    Gastrô Dalí · Cozinha Autoral · Muriaé MG · Desde 2023 ·
                   </textPath>
                 </text>
               </svg>
             </div>
-            <div className="absolute inset-8 rounded-full border border-secondary/30" />
-            <div className="absolute inset-12 rounded-full bg-gradient-to-br from-secondary/15 via-cream to-secondary/10 blur-2xl animate-shimmer" />
+            <div className="absolute inset-6 rounded-full border border-secondary/40" />
+            <div className="absolute inset-10 rounded-full border border-secondary/15" />
+            <div className="absolute inset-14 rounded-full bg-gradient-to-br from-secondary/30 via-transparent to-secondary/10 blur-2xl animate-shimmer" />
             <motion.img
               src={logo}
               alt="Gastrô Dalí"
-              className="relative z-10 h-3/4 w-3/4 object-contain drop-shadow-[0_20px_40px_rgba(120,40,40,0.25)]"
-              animate={{ y: [0, -8, 0] }}
+              className="relative z-10 h-3/4 w-3/4 object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
+              animate={{ y: [0, -10, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.div>
@@ -200,7 +203,7 @@ function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.4 }}
-          className="relative mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 border-t border-secondary/25 px-4 py-8 md:px-8"
+          className="relative mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-6 border-t border-secondary/30 px-4 py-8 md:px-8"
         >
           {[
             { n: "3", l: "Anos de história" },
@@ -209,10 +212,10 @@ function Home() {
             { n: "★★★★★", l: "Na nossa praça" },
           ].map((s) => (
             <div key={s.l} className="flex flex-col">
-              <span className="font-display text-3xl text-primary md:text-4xl">
+              <span className="font-display text-3xl text-secondary md:text-4xl">
                 {s.n}
               </span>
-              <span className="mt-1 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+              <span className="mt-1 text-[10px] uppercase tracking-[0.3em] text-primary-foreground/60">
                 {s.l}
               </span>
             </div>
