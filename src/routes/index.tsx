@@ -707,6 +707,7 @@ function Home() {
           className="pointer-events-none absolute bottom-12 right-10 hidden rotate-12 md:block"
         >
           <MeltingClock className="h-24 w-28 text-primary animate-float-slow" time="00:07" />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
