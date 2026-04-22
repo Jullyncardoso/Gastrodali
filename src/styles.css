@@ -32,6 +32,9 @@
   --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-burgundy: var(--burgundy);
+  --color-neon-orange: var(--neon-orange);
+  --color-dali-blue: var(--dali-blue);
+  --color-mustard: var(--mustard);
   --font-display: "Cormorant Garamond", "Georgia", serif;
   --font-body: "DM Sans", system-ui, sans-serif;
   --shadow-elegant: 0 30px 80px -30px rgba(0, 0, 0, 0.6);
@@ -45,6 +48,9 @@
   --paper: #F2EBDD;
   --gold: #C9A961;
   --burgundy: #6E1F2A;
+  --neon-orange: #FF7A1A;
+  --dali-blue: #2B5C8A;
+  --mustard: #E0A435;
 
   --background: #0E0B0A;
   --foreground: #F2EBDD;
