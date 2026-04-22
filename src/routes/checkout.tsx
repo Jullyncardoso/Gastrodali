@@ -38,7 +38,7 @@ const schema = z
     complemento: z.string().trim().max(120).optional().or(z.literal("")),
     referencia: z.string().trim().max(160).optional().or(z.literal("")),
     pagamento: z.enum(["credito", "debito", "dinheiro", "pix"], {
-      required_error: "Escolha a forma de pagamento",
+      message: "Escolha a forma de pagamento",
     }),
     troco: z.string().trim().max(20).optional().or(z.literal("")),
     observacoes: z.string().trim().max(500).optional().or(z.literal("")),
