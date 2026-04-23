@@ -224,7 +224,7 @@ function Home() {
             transition={{ duration: 1, delay: 1.4 }}
             className="absolute bottom-10 right-6 z-10 max-w-[14rem] text-right md:right-10"
           >
-            <div className="eyebrow mb-2">Nosso endereço</div>
+            <div className="eyebrow mb-2">A casa onírica</div>
             <div className="font-display text-3xl italic text-paper">
               Boulevard Center
             </div>
