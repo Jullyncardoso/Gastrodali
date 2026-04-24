@@ -36,6 +36,16 @@ import photoDrinkMona from "@/assets/photo-drink-mona.jpg";
 import photoBand from "@/assets/photo-band-live.jpg";
 import fachada from "@/assets/gallery-fachada.png";
 import deck from "@/assets/gallery-deck.png";
+import uploadPracaNoite from "@/assets/upload-praca-noite.png";
+import uploadLogoLuminoso from "@/assets/upload-logo-luminoso.png";
+import uploadPicanhaCompleta from "@/assets/upload-picanha-completa.png";
+import uploadBruschettas from "@/assets/upload-bruschettas.png";
+import uploadBarDrinks from "@/assets/upload-bar-drinks.png";
+import uploadIscasFritas from "@/assets/upload-iscas-fritas.png";
+import uploadBatatasChopp from "@/assets/upload-batatas-chopp.png";
+import uploadDeckMural from "@/assets/upload-deck-mural.png";
+import uploadFachadaNoite from "@/assets/upload-fachada-noite.png";
+import uploadSalaoVidro from "@/assets/upload-salao-vidro.png";
 import { MeltingClock } from "@/components/dali/MeltingClock";
 import { Ant, Mustache } from "@/components/dali/Ant";
 
