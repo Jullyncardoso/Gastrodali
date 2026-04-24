@@ -593,6 +593,22 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-background/20" />
         <div className="absolute inset-0 bg-grain opacity-30" />
 
+        {/* Surreal floating clock */}
+        <div className="pointer-events-none absolute right-8 top-10 z-10 hidden md:block">
+          <MeltingClock
+            className="h-24 w-28 text-neon-orange animate-float-slow opacity-80"
+            time="3:33"
+          />
+        </div>
+
+        {/* Marching ants strip */}
+        <div className="pointer-events-none absolute bottom-6 left-0 right-0 z-10 overflow-hidden opacity-60">
+          <div className="flex gap-8 animate-ant-march whitespace-nowrap text-neon-orange">
+            {Array.from({ length: 16 }).map((_, i) => (
+              <Ant key={i} className="h-3 w-6 shrink-0" />
+            ))}
+          </div>
+        </div>
         <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 md:px-12 lg:px-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -605,7 +621,7 @@ function Home() {
             <blockquote className="mt-8 font-display text-4xl leading-[1.05] text-paper md:text-6xl">
               “O surrealismo destrói apenas
               <br />
-              <em className="text-neon">as algemas</em> que limitam
+              <em className="text-neon animate-wobble">as algemas</em> que limitam
               <br />
               nossa visão.”
             </blockquote>
@@ -627,6 +643,17 @@ function Home() {
             background:
               "conic-gradient(from 0deg, transparent, color-mix(in oklab, var(--neon-orange) 18%, transparent), transparent 60%)",
             filter: "blur(80px)",
+          }}
+        />
+
+        {/* Surreal vortex on the left */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-32 bottom-10 -z-10 h-[28rem] w-[28rem] rounded-full animate-vortex"
+          style={{
+            background:
+              "conic-gradient(from 90deg, transparent, color-mix(in oklab, var(--burgundy) 30%, transparent), transparent 70%)",
+            filter: "blur(60px)",
           }}
         />
 
@@ -687,7 +714,7 @@ function Home() {
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -6 }}
-                className="group relative overflow-hidden border border-border bg-background p-7 transition-colors duration-500 hover:border-neon-orange"
+                className="tilt-card group relative overflow-hidden border border-border bg-background p-7 transition-colors duration-500 hover:border-neon-orange"
                 style={
                   c.color === "burgundy"
                     ? {
@@ -836,7 +863,7 @@ function Home() {
                   delay: (i % 6) * 0.07,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className={`group relative overflow-hidden border border-border ${p.cls}`}
+                className={`melt-hover group relative overflow-hidden border border-border ${p.cls}`}
               >
                 <img
                   src={p.src}
