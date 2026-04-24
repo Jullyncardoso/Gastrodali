@@ -26,6 +26,7 @@ import {
 import photoEyesArch from "@/assets/photo-eyes-arch.jpg";
 import photoNeonDali from "@/assets/photo-neon-dali.jpg";
 import photoBoothEyes from "@/assets/photo-booth-eyes.jpg";
+import photoBarDrinks from "@/assets/photo-bar-drinks.jpg";
 import photoPicanha from "@/assets/photo-picanha.jpg";
 import picanhaChapa from "@/assets/picanha-chapa.jpg";
 import photoBurger from "@/assets/photo-burger-coke.jpg";
@@ -804,7 +805,7 @@ function Home() {
           <div className="grid grid-cols-2 gap-3 md:grid-cols-6 md:auto-rows-[14rem]">
             {[
               { src: photoEyesArch, alt: "Mural de olhos e mesa amarela", cls: "md:col-span-3 md:row-span-2" },
-              { src: photoBoothEyes, alt: "Booth com mural de olhos", cls: "md:col-span-3" },
+              { src: photoBarDrinks, alt: "Drinks autorais no balcão do bar", cls: "md:col-span-3" },
               { src: photoBurger, alt: "Hambúrguer artesanal com fritas", cls: "md:col-span-2" },
               { src: photoPicanha, alt: "Picanha na chapa de pedra", cls: "md:col-span-1" },
               { src: photoNeonDali, alt: "Frase em neon de Dalí", cls: "md:col-span-2 md:row-span-2" },
