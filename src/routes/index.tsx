@@ -587,8 +587,8 @@ function Home() {
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 2 }}
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          style={{ objectPosition: "70% center" }}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: "center 30%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-background/20" />
         <div className="absolute inset-0 bg-grain opacity-30" />
@@ -728,6 +728,7 @@ function Home() {
               alt="Carta de vinhos do Gastrô Dalí"
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover animate-ken-burns"
+              style={{ objectPosition: "center 85%" }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
           </motion.div>
