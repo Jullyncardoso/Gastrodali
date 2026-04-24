@@ -728,6 +728,7 @@ function Home() {
               alt="Carta de vinhos do Gastrô Dalí"
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover animate-ken-burns"
+              style={{ objectPosition: "center 85%" }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
           </motion.div>
