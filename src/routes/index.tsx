@@ -568,17 +568,18 @@ function Home() {
       </section>
 
       {/* ================= NEON QUOTE — foto real do letreiro ================= */}
-      <section className="relative h-[70vh] overflow-hidden border-y border-border">
+      <section className="relative h-[80vh] overflow-hidden border-y border-border">
         <motion.img
           src={photoNeonDali}
-          alt='Frase em neon: "O surrealismo é destrutivo, mas destrói apenas o que considera algemas que limitam nossa visão" — Dalí'
-          initial={{ scale: 1.05 }}
+          alt='Frase em neon: "O surrealismo é destrutivo, mas destrói apenas o que considera algemas que limitam nossa visão" Dalí'
+          initial={{ scale: 1.08 }}
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 2 }}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          style={{ objectPosition: "center 35%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-background/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/55 to-background/30" />
         <div className="absolute inset-0 bg-grain opacity-30" />
 
         <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 md:px-12 lg:px-20">
