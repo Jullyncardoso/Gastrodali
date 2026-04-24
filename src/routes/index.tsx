@@ -646,6 +646,17 @@ function Home() {
           }}
         />
 
+        {/* Surreal vortex on the left */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-32 bottom-10 -z-10 h-[28rem] w-[28rem] rounded-full animate-vortex"
+          style={{
+            background:
+              "conic-gradient(from 90deg, transparent, color-mix(in oklab, var(--burgundy) 30%, transparent), transparent 70%)",
+            filter: "blur(60px)",
+          }}
+        />
+
         <div className="mx-auto max-w-7xl">
           <Chapter title="O cardápio" />
 
