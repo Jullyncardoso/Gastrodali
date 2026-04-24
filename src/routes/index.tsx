@@ -577,9 +577,9 @@ function Home() {
           viewport={{ once: true }}
           transition={{ duration: 2 }}
           className="absolute inset-0 h-full w-full object-cover object-center"
-          style={{ objectPosition: "center 35%" }}
+          style={{ objectPosition: "70% center" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/55 to-background/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-background/20" />
         <div className="absolute inset-0 bg-grain opacity-30" />
 
         <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 md:px-12 lg:px-20">
