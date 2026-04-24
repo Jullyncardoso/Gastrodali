@@ -687,7 +687,7 @@ function Home() {
                 viewport={{ once: true, margin: "-30px" }}
                 transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -6 }}
-                className="group relative overflow-hidden border border-border bg-background p-7 transition-colors duration-500 hover:border-neon-orange"
+                className="tilt-card group relative overflow-hidden border border-border bg-background p-7 transition-colors duration-500 hover:border-neon-orange"
                 style={
                   c.color === "burgundy"
                     ? {
