@@ -605,7 +605,7 @@ function Home() {
             <blockquote className="mt-8 font-display text-4xl leading-[1.05] text-paper md:text-6xl">
               “O surrealismo destrói apenas
               <br />
-              <em className="text-neon">as algemas</em> que limitam
+              <em className="text-neon animate-wobble">as algemas</em> que limitam
               <br />
               nossa visão.”
             </blockquote>
