@@ -186,6 +186,66 @@
 }
 .animate-ken-burns { animation: ken-burns 20s ease-in-out infinite alternate; }
 
+/* === SURREALIST EXTRAS === */
+
+/* Slow rotating spiral (Dalí dreamlike vortex) */
+@keyframes vortex {
+  0% { transform: rotate(0deg) scale(1); opacity: 0.35; }
+  50% { transform: rotate(180deg) scale(1.08); opacity: 0.55; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.35; }
+}
+.animate-vortex { animation: vortex 40s ease-in-out infinite; transform-origin: center; }
+
+/* Eye blink (recurring Dalí motif) */
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  94%, 98% { transform: scaleY(0.08); }
+}
+.animate-blink { animation: blink 5s ease-in-out infinite; transform-origin: center; }
+
+/* Liquid melt on hover for images */
+.melt-hover {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
+  transform-origin: top center;
+}
+.melt-hover:hover {
+  transform: scaleY(1.04) skewX(-1.5deg) translateY(4px);
+  filter: saturate(1.1) contrast(1.05);
+}
+
+/* Tilt-glow card hover */
+.tilt-card {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease, border-color 0.6s ease;
+}
+.tilt-card:hover {
+  transform: perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-6px);
+  box-shadow:
+    0 30px 60px -30px color-mix(in oklab, var(--neon-orange) 40%, transparent),
+    0 10px 30px -10px color-mix(in oklab, var(--burgundy) 40%, transparent);
+}
+
+/* Surreal floating drift in random direction */
+@keyframes drift-x {
+  0%, 100% { transform: translateX(0) rotate(-2deg); }
+  50% { transform: translateX(18px) rotate(2deg); }
+}
+.animate-drift-x { animation: drift-x 12s ease-in-out infinite; }
+
+/* Soft pulse glow for neon accents */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--neon-orange) 0%, transparent); }
+  50% { box-shadow: 0 0 40px 6px color-mix(in oklab, var(--neon-orange) 35%, transparent); }
+}
+.animate-glow-pulse { animation: glow-pulse 4s ease-in-out infinite; }
+
+/* Italic letter wobble — surreal typography */
+@keyframes wobble-letter {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-3px) rotate(-1.5deg); }
+  75% { transform: translateY(2px) rotate(1.5deg); }
+}
+.animate-wobble { animation: wobble-letter 5s ease-in-out infinite; display: inline-block; }
+
 /* Dotted surrealist horizon */
 .dali-horizon {
   background-image: linear-gradient(to bottom,
