@@ -587,8 +587,8 @@ function Home() {
           whileInView={{ scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 2 }}
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          style={{ objectPosition: "70% center" }}
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: "center 30%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-background/20" />
         <div className="absolute inset-0 bg-grain opacity-30" />
