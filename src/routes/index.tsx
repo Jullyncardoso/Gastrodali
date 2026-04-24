@@ -836,7 +836,7 @@ function Home() {
                   delay: (i % 6) * 0.07,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className={`group relative overflow-hidden border border-border ${p.cls}`}
+                className={`melt-hover group relative overflow-hidden border border-border ${p.cls}`}
               >
                 <img
                   src={p.src}
