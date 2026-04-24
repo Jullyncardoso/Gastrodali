@@ -804,16 +804,16 @@ function Home() {
 
           <div className="grid grid-cols-2 gap-3 md:grid-cols-6 md:auto-rows-[14rem]">
             {[
-              { src: photoEyesArch, alt: "Mural de olhos e mesa amarela", cls: "md:col-span-3 md:row-span-2" },
-              { src: photoBarDrinks, alt: "Drinks autorais no balcão do bar", cls: "md:col-span-3" },
-              { src: photoBurger, alt: "Hambúrguer artesanal com fritas", cls: "md:col-span-2" },
-              { src: photoPicanha, alt: "Picanha na chapa de pedra", cls: "md:col-span-1" },
-              { src: photoNeonDali, alt: "Frase em neon de Dalí", cls: "md:col-span-2 md:row-span-2" },
-              { src: photoPizza, alt: "Pizza de calabresa com vinho", cls: "md:col-span-2" },
-              { src: photoDrinkMona, alt: "Drink autoral com Mona Lisa", cls: "md:col-span-1" },
-              { src: photoWineMenu, alt: "Carta de vinhos e cardápio", cls: "md:col-span-2" },
-              { src: photoBand, alt: "Banda Acoustic Rock'n'Roll ao vivo", cls: "md:col-span-3" },
-              { src: fachada, alt: "Fachada do Gastrô Dalí", cls: "md:col-span-3" },
+              { src: uploadPracaNoite, alt: "Praça de alimentação à noite com vista para o Dalí", cls: "md:col-span-4 md:row-span-2", pos: "center" },
+              { src: uploadLogoLuminoso, alt: "Logo luminoso do gastrô Dalí", cls: "md:col-span-2 md:row-span-2", pos: "center" },
+              { src: uploadPicanhaCompleta, alt: "Picanha com arroz, fritas, vinagrete e farofa", cls: "md:col-span-2", pos: "center" },
+              { src: uploadBruschettas, alt: "Bruschettas variadas com flores comestíveis", cls: "md:col-span-2", pos: "center" },
+              { src: uploadBarDrinks, alt: "Drinks autorais no balcão do bar", cls: "md:col-span-2", pos: "center" },
+              { src: uploadIscasFritas, alt: "Iscas de carne com fritas e chopp", cls: "md:col-span-3", pos: "center" },
+              { src: uploadBatatasChopp, alt: "Batatas rústicas com maionese verde e chopp", cls: "md:col-span-3", pos: "center" },
+              { src: uploadDeckMural, alt: "Deck externo com mural colorido ao fundo", cls: "md:col-span-3", pos: "center" },
+              { src: uploadFachadaNoite, alt: "Fachada do gastrô Dalí à noite", cls: "md:col-span-3", pos: "center 70%" },
+              { src: uploadSalaoVidro, alt: "Salão envidraçado com vista para a praça", cls: "md:col-span-6", pos: "center 60%" },
             ].map((p, i) => (
               <motion.figure
                 key={i}
