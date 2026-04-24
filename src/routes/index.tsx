@@ -593,6 +593,22 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-background/20" />
         <div className="absolute inset-0 bg-grain opacity-30" />
 
+        {/* Surreal floating clock */}
+        <div className="pointer-events-none absolute right-8 top-10 z-10 hidden md:block">
+          <MeltingClock
+            className="h-24 w-28 text-neon-orange animate-float-slow opacity-80"
+            time="3:33"
+          />
+        </div>
+
+        {/* Marching ants strip */}
+        <div className="pointer-events-none absolute bottom-6 left-0 right-0 z-10 overflow-hidden opacity-60">
+          <div className="flex gap-8 animate-ant-march whitespace-nowrap text-neon-orange">
+            {Array.from({ length: 16 }).map((_, i) => (
+              <Ant key={i} className="h-3 w-6 shrink-0" />
+            ))}
+          </div>
+        </div>
         <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 md:px-12 lg:px-20">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
