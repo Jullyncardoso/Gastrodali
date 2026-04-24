@@ -17,7 +17,7 @@ export const menu: MenuCategory[] = [
   {
     id: "tropeiro",
     title: "Tropeiro Executivo",
-    subtitle: "Almoço — acompanha arroz, feijão tropeiro, batata frita, vinagrete e farofa",
+    subtitle: "Almoço. Acompanha arroz, feijão tropeiro, batata frita, vinagrete e farofa",
     items: [
       { id: "trop-frango", name: "Tropeiro com Frango", description: "Arroz, feijão tropeiro, batata frita, vinagrete, farofa e frango.", price: 26.0, category: "tropeiro" },
       { id: "trop-alcatra", name: "Tropeiro com Alcatra", description: "Arroz, feijão tropeiro, batata frita, vinagrete, farofa e alcatra.", price: 39.0, category: "tropeiro" },
@@ -51,7 +51,7 @@ export const menu: MenuCategory[] = [
   {
     id: "compartilhar",
     title: "Para Compartilhar",
-    subtitle: "Jantar — petiscos e pizzas para a mesa",
+    subtitle: "Jantar. Petiscos e pizzas para a mesa",
     items: [
       { id: "alcatra-fritas", name: "Alcatra com Fritas", description: "Tiras de alcatra (500g) com cebola e tomate cereja, batata frita com tempero especial e maionese de tabasco.", price: 89.9, category: "compartilhar" },
       { id: "batata-canoa", name: "Batata Canoa", description: "Tradicional batata canoa com tempero à base de páprica e maionese de tabasco.", price: 42.9, category: "compartilhar" },
@@ -79,7 +79,7 @@ export const menu: MenuCategory[] = [
   {
     id: "sandubas",
     title: "Sandubas",
-    subtitle: "Jantar — hambúrgueres artesanais e combos",
+    subtitle: "Jantar. Hambúrgueres artesanais e combos",
     items: [
       { id: "burgao-dali", name: "Burgão Dalí", description: "Blend artesanal de costela bovina 180g, cebola crispy, cogumelos confitados, pão brioche artesanal. Acompanha batata frita ou canoa.", price: 44.9, category: "sandubas" },
       { id: "espectro-cheddar", name: "El Espectro del Cheddar", description: "Blend artesanal 180g, pão brioche, cheddar, tiras de bacon, molho e batata frita ou canoa.", price: 42.9, category: "sandubas" },

@@ -27,6 +27,7 @@ import photoEyesArch from "@/assets/photo-eyes-arch.jpg";
 import photoNeonDali from "@/assets/photo-neon-dali.jpg";
 import photoBoothEyes from "@/assets/photo-booth-eyes.jpg";
 import photoPicanha from "@/assets/photo-picanha.jpg";
+import picanhaChapa from "@/assets/picanha-chapa.jpg";
 import photoBurger from "@/assets/photo-burger-coke.jpg";
 import photoPizza from "@/assets/photo-pizza-wine.jpg";
 import photoWineMenu from "@/assets/photo-wine-menu.jpg";
@@ -157,7 +158,7 @@ function Home() {
             “O surrealismo é destrutivo, mas destrói apenas o que limita nossa
             visão.”
             <span className="mt-1 block text-[10px] uppercase tracking-[0.4em] text-neon-orange/80 not-italic">
-              — Salvador Dalí
+              Salvador Dalí
             </span>
           </motion.p>
 
@@ -344,15 +345,15 @@ function Home() {
               <p className="font-display text-2xl leading-relaxed text-foreground/90 md:text-3xl">
                 Nascemos em Muriaé com uma vontade simples:{" "}
                 <em className="text-neon-orange/90">servir uma cozinha que foge do óbvio</em>
-                {" "}— sem perder o aconchego de uma mesa em casa.
+                , sem perder o aconchego de uma mesa em casa.
               </p>
 
               <div className="mt-10 grid gap-8 border-l-2 border-neon-orange/40 pl-8 text-foreground/75 md:grid-cols-2">
                 <p className="text-sm leading-relaxed">
                   Cada prato começa numa ideia, passa por testes, ganha ajustes
                   e só chega à mesa quando faz sentido. Ingredientes
-                  selecionados, técnica de bistrô e a liberdade de ousar
-                  — porque é assim que a gente gosta de comer.
+                  selecionados, técnica de bistrô e a liberdade de ousar,
+                  porque é assim que a gente gosta de comer.
                 </p>
                 <p className="text-sm leading-relaxed">
                   Do almoço executivo ao hambúrguer da noite, do happy hour
@@ -494,7 +495,7 @@ function Home() {
                 accent: "neon-orange",
               },
               {
-                img: photoPicanha,
+                img: picanhaChapa,
                 tag: "02 · Brasa",
                 title: "Picanha na chapa",
                 desc: "Cortes nobres selados, cebola roxa, tomate e cheiro-verde. O som da chapa é parte do prato.",
@@ -597,7 +598,7 @@ function Home() {
               nossa visão.”
             </blockquote>
             <div className="mt-8 text-xs uppercase tracking-[0.4em] text-neon-orange">
-              — Salvador Dalí
+              Salvador Dalí
             </div>
           </motion.div>
         </div>
@@ -760,7 +761,7 @@ function Home() {
             <div className="mt-10 flex items-center gap-3 text-foreground/60">
               <Wine className="h-4 w-4 text-neon-orange" />
               <span className="font-display text-sm italic">
-                “Não bebo vinho. Eu o desperto.” — Dalí
+                “Não bebo vinho. Eu o desperto.” Dalí
               </span>
             </div>
           </motion.div>
@@ -960,9 +961,9 @@ function Home() {
 
                 <div className="mt-10 divide-y divide-border/70">
                   {[
-                    { day: "Segunda a sexta", hours: "10:00 — 00:00" },
-                    { day: "Sábado", hours: "10:00 — 00:00" },
-                    { day: "Domingo", hours: "15:00 — 00:00" },
+                    { day: "Segunda a sexta", hours: "10:00 às 00:00" },
+                    { day: "Sábado", hours: "10:00 às 00:00" },
+                    { day: "Domingo", hours: "15:00 às 00:00" },
                   ].map((row, i) => (
                     <motion.div
                       key={row.day}
