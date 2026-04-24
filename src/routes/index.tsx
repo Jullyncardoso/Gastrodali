@@ -334,47 +334,47 @@ function Home() {
               </div>
             </motion.div>
 
-            <div className="space-y-6 md:col-span-7">
-              {[
-                {
-                  year: "Janeiro 2023",
-                  title: "O começo",
-                  text: "O Gastrô Dalí abriu as portas com a vontade de oferecer em Muriaé uma cozinha que foge do óbvio. Cardápio enxuto, técnica e afeto.",
-                },
-                {
-                  year: "2024",
-                  title: "Tradição e ousadia",
-                  text: "Unimos a agilidade do dia a dia à sofisticação de sabores marcantes. Do almoço executivo aos hambúrgueres artesanais que dão vida às noites.",
-                },
-                {
-                  year: "Hoje",
-                  title: "Casa cheia",
-                  text: "Cada prato é fruto de testes, ingredientes selecionados e ousadia. Almoço em família, happy hour ou jantar a dois.",
-                },
-              ].map((b, i) => (
-                <motion.div
-                  key={b.title}
-                  initial={{ opacity: 0, x: 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                  className="group grid grid-cols-[auto_1fr] gap-8 border border-border/60 bg-background/70 p-7 backdrop-blur-md transition-all duration-500 hover:border-neon-orange/60 hover:bg-background/85"
-                >
-                  <div className="font-display text-2xl italic text-neon-orange/70">
-                    0{i + 1}
-                  </div>
-                  <div>
-                    <div className="eyebrow mb-3">{b.year}</div>
-                    <h3 className="font-display text-2xl text-foreground md:text-3xl">
-                      {b.title}
-                    </h3>
-                    <p className="mt-3 max-w-xl text-sm leading-relaxed text-foreground/75">
-                      {b.text}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.9, delay: 0.15 }}
+              className="md:col-span-7"
+            >
+              <p className="font-display text-2xl leading-relaxed text-foreground/90 md:text-3xl">
+                Nascemos em Muriaé com uma vontade simples:{" "}
+                <em className="text-neon-orange/90">servir uma cozinha que foge do óbvio</em>
+                {" "}— sem perder o aconchego de uma mesa em casa.
+              </p>
+
+              <div className="mt-10 grid gap-8 border-l-2 border-neon-orange/40 pl-8 text-foreground/75 md:grid-cols-2">
+                <p className="text-sm leading-relaxed">
+                  Cada prato começa numa ideia, passa por testes, ganha ajustes
+                  e só chega à mesa quando faz sentido. Ingredientes
+                  selecionados, técnica de bistrô e a liberdade de ousar
+                  — porque é assim que a gente gosta de comer.
+                </p>
+                <p className="text-sm leading-relaxed">
+                  Do almoço executivo ao hambúrguer da noite, do happy hour
+                  ao jantar a dois, queremos que cada visita seja diferente
+                  da anterior. A casa é sua. O sabor é nosso recado.
+                </p>
+              </div>
+
+              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-foreground/60">
+                <span className="font-display text-base italic text-gold">
+                  cozinha autoral
+                </span>
+                <span className="h-1 w-1 rounded-full bg-border" />
+                <span className="font-display text-base italic text-gold">
+                  ingredientes locais
+                </span>
+                <span className="h-1 w-1 rounded-full bg-border" />
+                <span className="font-display text-base italic text-gold">
+                  feita à mão, todo dia
+                </span>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
