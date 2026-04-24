@@ -841,6 +841,7 @@ function Home() {
                   src={p.src}
                   alt={p.alt}
                   loading="lazy"
+                  style={{ objectPosition: p.pos ?? "center" }}
                   className="h-full w-full object-cover grayscale-[20%] transition-all duration-[1400ms] ease-out group-hover:scale-110 group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/10 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-30" />
