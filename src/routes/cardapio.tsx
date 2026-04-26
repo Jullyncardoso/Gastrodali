@@ -71,10 +71,10 @@ function Cardapio() {
       <div className="sticky top-20 z-30 border-b border-border bg-background/90 backdrop-blur-xl">
         <div className="mx-auto max-w-7xl overflow-x-auto px-6 md:px-12 lg:px-20">
           <div className="flex gap-1 py-3">
-            {menu.map((c, i) => (
-              <a
+            {menu.map((c) => (
+              <button
                 key={c.id}
-                href={`#${c.id}`}
+                type="button"
                 onClick={() => setActive(c.id)}
                 className={`whitespace-nowrap border px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] transition-all duration-300 ${
                   active === c.id
@@ -83,23 +83,21 @@ function Cardapio() {
                 }`}
               >
                 {c.title}
-              </a>
+              </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Sections */}
-      <div className="mx-auto max-w-7xl space-y-24 px-6 py-16 md:px-12 lg:px-20">
-        {menu.map((cat, ci) => (
+      {/* Sections - only the active one */}
+      <div className="mx-auto max-w-7xl px-6 py-16 md:px-12 lg:px-20">
+        {menu.filter((cat) => cat.id === active).map((cat) => (
           <motion.section
             key={cat.id}
             id={cat.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="scroll-mt-40"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
           >
             <div className="mb-12 flex items-center gap-6 border-b border-border pb-8">
               <div className="h-px w-12 bg-primary" />
