@@ -25,7 +25,7 @@ import {
 // Real photos from the restaurant
 import photoEyesArch from "@/assets/photo-eyes-arch.jpg";
 import photoNeonDali from "@/assets/photo-neon-dali.jpg";
-import neonDaliManifesto from "@/assets/neon-dali-manifesto.png";
+import neonDaliManifesto from "@/assets/neon-dali-cutout.png";
 import photoBoothEyes from "@/assets/photo-booth-eyes.jpg";
 import photoBarDrinks from "@/assets/photo-bar-drinks.jpg";
 import photoPicanha from "@/assets/photo-picanha.jpg";
@@ -657,22 +657,23 @@ function Home() {
             </div>
           </motion.div>
 
-          {/* Photo side — RIGHT */}
+          {/* Neon cutout — RIGHT (no frame, floats over smoke) */}
           <motion.div
-            initial={{ opacity: 0, scale: 1.04 }}
+            initial={{ opacity: 0, scale: 0.94 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative order-1 aspect-[4/5] w-full overflow-hidden border border-foreground/10 shadow-2xl md:order-2"
+            className="relative order-1 flex w-full items-center justify-center md:order-2"
           >
-            <img
+            <motion.img
               src={neonDaliManifesto}
-              alt='Letreiro de neon laranja com a frase: "O surrealismo é destrutivo, mas destrói apenas o que considera algemas que limitam nossa visão" — Dalí'
-              className="h-full w-full object-cover"
-              style={{ objectPosition: "center center" }}
+              alt='Letreiro de neon laranja: "O surrealismo é destrutivo, mas destrói apenas o que considera algemas que limitam nossa visão" — Dalí'
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="h-auto w-full max-w-md drop-shadow-[0_0_40px_rgba(255,120,40,0.45)]"
             />
-            {/* Surreal floating clock over photo */}
-            <div className="pointer-events-none absolute -left-6 -top-6 hidden md:block">
+            {/* Surreal floating clock */}
+            <div className="pointer-events-none absolute -left-2 top-0 hidden md:block">
               <MeltingClock
                 className="h-24 w-28 text-neon-orange animate-float-slow opacity-90 drop-shadow-[0_0_20px_rgba(255,120,40,0.5)]"
                 time="3:33"
