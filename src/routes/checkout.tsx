@@ -82,6 +82,7 @@ function Checkout() {
   });
 
   const pagamento = watch("pagamento");
+  const tipoEntrega = watch("tipoEntrega");
 
   const onSubmit = async (data: FormData) => {
     if (count === 0) {
