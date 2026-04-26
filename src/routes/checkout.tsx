@@ -32,9 +32,12 @@ const schema = z
       .max(20)
       .regex(/^[\d\s()+-]+$/, "Use apenas números e símbolos comuns"),
     email: z.string().trim().email("E-mail inválido").max(255).or(z.literal("")).optional(),
-    logradouro: z.string().trim().min(3, "Informe o logradouro").max(160),
-    numero: z.string().trim().min(1, "Informe o número").max(20),
-    bairro: z.string().trim().min(2, "Informe o bairro").max(80),
+    tipoEntrega: z.enum(["delivery", "balcao"], {
+      message: "Escolha como deseja receber",
+    }),
+    logradouro: z.string().trim().max(160).optional().or(z.literal("")),
+    numero: z.string().trim().max(20).optional().or(z.literal("")),
+    bairro: z.string().trim().max(80).optional().or(z.literal("")),
     complemento: z.string().trim().max(120).optional().or(z.literal("")),
     referencia: z.string().trim().max(160).optional().or(z.literal("")),
     pagamento: z.enum(["credito", "debito", "dinheiro", "pix"], {
@@ -42,6 +45,19 @@ const schema = z
     }),
     troco: z.string().trim().max(20).optional().or(z.literal("")),
     observacoes: z.string().trim().max(500).optional().or(z.literal("")),
+  })
+  .superRefine((data, ctx) => {
+    if (data.tipoEntrega === "delivery") {
+      if (!data.logradouro || data.logradouro.trim().length < 3) {
+        ctx.addIssue({ code: "custom", path: ["logradouro"], message: "Informe o logradouro" });
+      }
+      if (!data.numero || data.numero.trim().length < 1) {
+        ctx.addIssue({ code: "custom", path: ["numero"], message: "Informe o número" });
+      }
+      if (!data.bairro || data.bairro.trim().length < 2) {
+        ctx.addIssue({ code: "custom", path: ["bairro"], message: "Informe o bairro" });
+      }
+    }
   });
 
 type FormData = z.infer<typeof schema>;
@@ -59,10 +75,14 @@ function Checkout() {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { pagamento: undefined as unknown as FormData["pagamento"] },
+    defaultValues: {
+      pagamento: undefined as unknown as FormData["pagamento"],
+      tipoEntrega: "delivery",
+    },
   });
 
   const pagamento = watch("pagamento");
+  const tipoEntrega = watch("tipoEntrega");
 
   const onSubmit = async (data: FormData) => {
     if (count === 0) {
@@ -135,27 +155,56 @@ function Checkout() {
             </div>
           </Section>
 
-          <Section title="Endereço de entrega">
-            <div className="grid gap-5 md:grid-cols-[1fr_140px]">
-              <Field label="Logradouro *" error={errors.logradouro?.message}>
-                <Input {...register("logradouro")} placeholder="Rua, avenida..." />
-              </Field>
-              <Field label="Número *" error={errors.numero?.message}>
-                <Input {...register("numero")} placeholder="123" />
-              </Field>
-            </div>
-            <div className="grid gap-5 md:grid-cols-2">
-              <Field label="Bairro *" error={errors.bairro?.message}>
-                <Input {...register("bairro")} placeholder="Centro" />
-              </Field>
-              <Field label="Complemento" error={errors.complemento?.message}>
-                <Input {...register("complemento")} placeholder="Apto, bloco, casa..." />
-              </Field>
-            </div>
-            <Field label="Ponto de referência" error={errors.referencia?.message}>
-              <Input {...register("referencia")} placeholder="Próximo a..." />
-            </Field>
+          <Section title="Como deseja receber?">
+            <RadioGroup
+              value={tipoEntrega}
+              onValueChange={(v) => setValue("tipoEntrega", v as FormData["tipoEntrega"], { shouldValidate: true })}
+              className="grid grid-cols-1 gap-3 md:grid-cols-2"
+            >
+              {[
+                { v: "delivery", l: "Delivery", d: "Entregamos no seu endereço" },
+                { v: "balcao", l: "Retirada no balcão", d: "Buscar no restaurante" },
+              ].map((opt) => (
+                <Label
+                  key={opt.v}
+                  className={`flex cursor-pointer items-start gap-3 rounded-lg border p-4 transition ${
+                    tipoEntrega === opt.v ? "border-primary bg-primary/10" : "border-border/60 hover:border-primary/50"
+                  }`}
+                >
+                  <RadioGroupItem value={opt.v} className="mt-1" />
+                  <div>
+                    <p className="text-sm font-medium">{opt.l}</p>
+                    <p className="text-xs text-muted-foreground">{opt.d}</p>
+                  </div>
+                </Label>
+              ))}
+            </RadioGroup>
+            {errors.tipoEntrega && <p className="text-xs text-destructive">{errors.tipoEntrega.message}</p>}
           </Section>
+
+          {tipoEntrega === "delivery" && (
+            <Section title="Endereço de entrega">
+              <div className="grid gap-5 md:grid-cols-[1fr_140px]">
+                <Field label="Logradouro *" error={errors.logradouro?.message}>
+                  <Input {...register("logradouro")} placeholder="Rua, avenida..." />
+                </Field>
+                <Field label="Número *" error={errors.numero?.message}>
+                  <Input {...register("numero")} placeholder="123" />
+                </Field>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2">
+                <Field label="Bairro *" error={errors.bairro?.message}>
+                  <Input {...register("bairro")} placeholder="Centro" />
+                </Field>
+                <Field label="Complemento" error={errors.complemento?.message}>
+                  <Input {...register("complemento")} placeholder="Apto, bloco, casa..." />
+                </Field>
+              </div>
+              <Field label="Ponto de referência" error={errors.referencia?.message}>
+                <Input {...register("referencia")} placeholder="Próximo a..." />
+              </Field>
+            </Section>
+          )}
 
           <Section title="Pagamento">
             <RadioGroup
