@@ -579,57 +579,62 @@ function Home() {
       </section>
 
       {/* ================= NEON QUOTE — foto real do letreiro ================= */}
-      <section className="relative overflow-hidden border-y border-border bg-paper text-background">
-        {/* Smoky white background */}
+      <section className="relative overflow-hidden border-y border-border bg-background">
+        {/* Base dark gradient matching the rest of the site */}
         <div
           aria-hidden
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(1200px 600px at 20% 30%, color-mix(in oklab, var(--neon-orange) 10%, transparent), transparent 60%), radial-gradient(900px 500px at 80% 70%, color-mix(in oklab, var(--foreground) 8%, transparent), transparent 60%), linear-gradient(180deg, #f5f1ea 0%, #ece6db 100%)",
+              "radial-gradient(1000px 600px at 80% 30%, color-mix(in oklab, var(--neon-orange) 10%, transparent), transparent 65%), linear-gradient(180deg, var(--background) 0%, color-mix(in oklab, var(--background) 92%, black) 100%)",
+          }}
+        />
+
+        {/* White smoke clouds */}
+        <motion.div
+          aria-hidden
+          animate={{ x: [0, 40, 0], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="pointer-events-none absolute -left-32 top-10 h-[28rem] w-[40rem] rounded-full blur-3xl"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(255,255,255,0.45), rgba(255,255,255,0.1) 50%, transparent 75%)",
           }}
         />
         <motion.div
           aria-hidden
-          animate={{ opacity: [0.25, 0.45, 0.25], scale: [1, 1.05, 1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-grain opacity-40"
+          animate={{ x: [0, -30, 0], opacity: [0.25, 0.45, 0.25] }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="pointer-events-none absolute -bottom-20 left-1/3 h-[24rem] w-[34rem] rounded-full blur-3xl"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(255,255,255,0.35), rgba(255,255,255,0.08) 55%, transparent 80%)",
+          }}
+        />
+        <motion.div
+          aria-hidden
+          animate={{ y: [0, -20, 0], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="pointer-events-none absolute -top-24 right-1/4 h-[22rem] w-[30rem] rounded-full blur-3xl"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(255,255,255,0.3), rgba(255,255,255,0.06) 55%, transparent 80%)",
+          }}
         />
 
-        <div className="relative z-10 mx-auto grid min-h-[80vh] max-w-7xl grid-cols-1 items-center gap-10 px-6 py-20 md:grid-cols-2 md:px-12 md:py-24 lg:px-20">
-          {/* Photo side */}
-          <motion.div
-            initial={{ opacity: 0, scale: 1.04 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative aspect-[4/5] w-full overflow-hidden border border-foreground/10 shadow-2xl"
-          >
-            <img
-              src={neonDaliManifesto}
-              alt='Letreiro de neon laranja com a frase: "O surrealismo é destrutivo, mas destrói apenas o que considera algemas que limitam nossa visão" — Dalí'
-              className="h-full w-full object-cover"
-              style={{ objectPosition: "center center" }}
-            />
-            {/* Surreal floating clock over photo */}
-            <div className="pointer-events-none absolute -right-6 -top-6 hidden md:block">
-              <MeltingClock
-                className="h-24 w-28 text-neon-orange animate-float-slow opacity-90 drop-shadow-[0_0_20px_rgba(255,120,40,0.5)]"
-                time="3:33"
-              />
-            </div>
-          </motion.div>
+        <div className="absolute inset-0 bg-grain opacity-20" />
 
-          {/* Text side */}
+        <div className="relative z-10 mx-auto grid min-h-[80vh] max-w-7xl grid-cols-1 items-center gap-12 px-6 py-20 md:grid-cols-2 md:px-12 md:py-24 lg:px-20">
+          {/* Text side — LEFT */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
+            className="relative order-2 md:order-1"
           >
             <Eyebrow>Manifesto</Eyebrow>
-            <blockquote className="mt-8 font-display text-3xl leading-[1.1] text-background md:text-5xl">
+            <blockquote className="mt-8 font-display text-3xl leading-[1.1] text-paper md:text-5xl">
               “O surrealismo é destrutivo,
               <br />
               mas destrói apenas o que
@@ -644,11 +649,34 @@ function Home() {
 
             {/* Marching ants strip below text */}
             <div className="pointer-events-none mt-10 overflow-hidden opacity-60">
-              <div className="flex gap-8 animate-ant-march whitespace-nowrap text-foreground/70">
+              <div className="flex gap-8 animate-ant-march whitespace-nowrap text-neon-orange">
                 {Array.from({ length: 12 }).map((_, i) => (
                   <Ant key={i} className="h-3 w-6 shrink-0" />
                 ))}
               </div>
+            </div>
+          </motion.div>
+
+          {/* Photo side — RIGHT */}
+          <motion.div
+            initial={{ opacity: 0, scale: 1.04 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+            className="relative order-1 aspect-[4/5] w-full overflow-hidden border border-foreground/10 shadow-2xl md:order-2"
+          >
+            <img
+              src={neonDaliManifesto}
+              alt='Letreiro de neon laranja com a frase: "O surrealismo é destrutivo, mas destrói apenas o que considera algemas que limitam nossa visão" — Dalí'
+              className="h-full w-full object-cover"
+              style={{ objectPosition: "center center" }}
+            />
+            {/* Surreal floating clock over photo */}
+            <div className="pointer-events-none absolute -left-6 -top-6 hidden md:block">
+              <MeltingClock
+                className="h-24 w-28 text-neon-orange animate-float-slow opacity-90 drop-shadow-[0_0_20px_rgba(255,120,40,0.5)]"
+                time="3:33"
+              />
             </div>
           </motion.div>
         </div>
