@@ -75,7 +75,10 @@ function Checkout() {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
-    defaultValues: { pagamento: undefined as unknown as FormData["pagamento"] },
+    defaultValues: {
+      pagamento: undefined as unknown as FormData["pagamento"],
+      tipoEntrega: "delivery",
+    },
   });
 
   const pagamento = watch("pagamento");
