@@ -333,9 +333,8 @@ function Home() {
                 <em className="text-gold-shine">do sabor.</em>
               </h2>
               <p className="mt-8 max-w-md text-foreground/80">
-                Inspirados em Salvador Dalí, fazemos da mesa um pequeno
-                manifesto: técnica de bistrô, ingrediente local e um toque de
-                imaginação em cada prato.
+                Fazemos da mesa um pequeno manifesto: técnica de bistrô,
+                ingrediente local e um toque de imaginação em cada prato.
               </p>
 
               <div className="mt-10 flex items-center gap-4 text-neon-orange/80">
