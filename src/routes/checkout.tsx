@@ -155,27 +155,56 @@ function Checkout() {
             </div>
           </Section>
 
-          <Section title="Endereço de entrega">
-            <div className="grid gap-5 md:grid-cols-[1fr_140px]">
-              <Field label="Logradouro *" error={errors.logradouro?.message}>
-                <Input {...register("logradouro")} placeholder="Rua, avenida..." />
-              </Field>
-              <Field label="Número *" error={errors.numero?.message}>
-                <Input {...register("numero")} placeholder="123" />
-              </Field>
-            </div>
-            <div className="grid gap-5 md:grid-cols-2">
-              <Field label="Bairro *" error={errors.bairro?.message}>
-                <Input {...register("bairro")} placeholder="Centro" />
-              </Field>
-              <Field label="Complemento" error={errors.complemento?.message}>
-                <Input {...register("complemento")} placeholder="Apto, bloco, casa..." />
-              </Field>
-            </div>
-            <Field label="Ponto de referência" error={errors.referencia?.message}>
-              <Input {...register("referencia")} placeholder="Próximo a..." />
-            </Field>
+          <Section title="Como deseja receber?">
+            <RadioGroup
+              value={tipoEntrega}
+              onValueChange={(v) => setValue("tipoEntrega", v as FormData["tipoEntrega"], { shouldValidate: true })}
+              className="grid grid-cols-1 gap-3 md:grid-cols-2"
+            >
+              {[
+                { v: "delivery", l: "Delivery", d: "Entregamos no seu endereço" },
+                { v: "balcao", l: "Retirada no balcão", d: "Buscar no restaurante" },
+              ].map((opt) => (
+                <Label
+                  key={opt.v}
+                  className={`flex cursor-pointer items-start gap-3 rounded-lg border p-4 transition ${
+                    tipoEntrega === opt.v ? "border-primary bg-primary/10" : "border-border/60 hover:border-primary/50"
+                  }`}
+                >
+                  <RadioGroupItem value={opt.v} className="mt-1" />
+                  <div>
+                    <p className="text-sm font-medium">{opt.l}</p>
+                    <p className="text-xs text-muted-foreground">{opt.d}</p>
+                  </div>
+                </Label>
+              ))}
+            </RadioGroup>
+            {errors.tipoEntrega && <p className="text-xs text-destructive">{errors.tipoEntrega.message}</p>}
           </Section>
+
+          {tipoEntrega === "delivery" && (
+            <Section title="Endereço de entrega">
+              <div className="grid gap-5 md:grid-cols-[1fr_140px]">
+                <Field label="Logradouro *" error={errors.logradouro?.message}>
+                  <Input {...register("logradouro")} placeholder="Rua, avenida..." />
+                </Field>
+                <Field label="Número *" error={errors.numero?.message}>
+                  <Input {...register("numero")} placeholder="123" />
+                </Field>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2">
+                <Field label="Bairro *" error={errors.bairro?.message}>
+                  <Input {...register("bairro")} placeholder="Centro" />
+                </Field>
+                <Field label="Complemento" error={errors.complemento?.message}>
+                  <Input {...register("complemento")} placeholder="Apto, bloco, casa..." />
+                </Field>
+              </div>
+              <Field label="Ponto de referência" error={errors.referencia?.message}>
+                <Input {...register("referencia")} placeholder="Próximo a..." />
+              </Field>
+            </Section>
+          )}
 
           <Section title="Pagamento">
             <RadioGroup
