@@ -333,9 +333,8 @@ function Home() {
                 <em className="text-gold-shine">do sabor.</em>
               </h2>
               <p className="mt-8 max-w-md text-foreground/80">
-                Inspirados em Salvador Dalí, fazemos da mesa um pequeno
-                manifesto: técnica de bistrô, ingrediente local e um toque de
-                imaginação em cada prato.
+                Fazemos da mesa um pequeno manifesto: técnica de bistrô,
+                ingrediente local e um toque de imaginação em cada prato.
               </p>
 
               <div className="mt-10 flex items-center gap-4 text-neon-orange/80">
@@ -873,9 +872,6 @@ function Home() {
                   className="h-full w-full object-cover grayscale-[20%] transition-all duration-[1400ms] ease-out group-hover:scale-110 group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/10 to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-30" />
-                <figcaption className="absolute bottom-4 left-4 right-4 translate-y-2 font-display text-lg italic text-paper opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                  {p.alt}
-                </figcaption>
               </motion.figure>
             ))}
           </div>
