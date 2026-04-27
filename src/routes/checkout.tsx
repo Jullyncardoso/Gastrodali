@@ -137,16 +137,17 @@ function Checkout() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           titulo: `${data.nome} - ${dataFormatada} - ${horaFormatada}`,
-          descricao: `
-🛒 *Itens:* ${itensTexto}
-💰 *Total:* ${formatBRL(total)}
-🧾 *Pagamento:* ${data.pagamento}${data.pagamento === "dinheiro" ? ` (troco para: ${data.troco || "não necessário"})` : ""}
-🚚 *Tipo:* ${data.tipoEntrega === "delivery" ? "Delivery" : "Retirada no balcão"}
-📍 *Endereço:* ${enderecoCompleto}
-📞 *WhatsApp:* ${data.telefone}
-✉️ *E-mail:* ${data.email || "—"}
-💬 *Obs:* ${data.observacoes || "Nenhuma"}
-          `.trim(),
+          descricao: [
+            `Cliente: ${data.nome}`,
+            `Itens: ${itensTexto}`,
+            `Total: ${formatBRL(total)}`,
+            `Pagamento: ${data.pagamento}${data.pagamento === "dinheiro" ? ` (troco para: ${data.troco || "não necessário"})` : ""}`,
+            `Tipo: ${data.tipoEntrega === "delivery" ? "Delivery" : "Retirada no balcão"}`,
+            `Endereço: ${enderecoCompleto}`,
+            `WhatsApp: ${data.telefone}`,
+            `E-mail: ${data.email || "—"}`,
+            `Obs: ${data.observacoes || "Nenhuma"}`,
+          ].join("\n"),
           cliente: data.nome,
           telefone: data.telefone,
           email: data.email || "",
