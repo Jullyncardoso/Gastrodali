@@ -104,15 +104,67 @@ function Checkout() {
       criado_em: new Date().toISOString(),
     };
 
-    // Webhook: a integração será conectada depois.
-    // Persistimos localmente para a tela de confirmação.
     try {
       sessionStorage.setItem("dali-last-order", JSON.stringify(pedido));
     } catch {
       // ignore
     }
 
-    await new Promise((r) => setTimeout(r, 600));
+    // Envio para Pipedream (Trello)
+    const enderecoCompleto =
+      data.tipoEntrega === "delivery"
+        ? [
+            `${data.logradouro}, ${data.numero}`,
+            data.bairro,
+            data.complemento,
+            data.referencia ? `Ref: ${data.referencia}` : "",
+          ]
+            .filter(Boolean)
+            .join(" - ")
+        : "Retirada no balcão";
+
+    const itensTexto = detailed
+      .map((d) => `${d.qty}x ${d.item.name} (${formatBRL(d.subtotal)})`)
+      .join(", ");
+
+    const agora = new Date();
+    const dataFormatada = agora.toLocaleDateString("pt-BR");
+    const horaFormatada = agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+
+    try {
+      await fetch("https://eof3pby26h37j6e.m.pipedream.net", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          titulo: `${data.nome} - ${dataFormatada} - ${horaFormatada}`,
+          descricao: `
+🛒 *Itens:* ${itensTexto}
+💰 *Total:* ${formatBRL(total)}
+🧾 *Pagamento:* ${data.pagamento}${data.pagamento === "dinheiro" ? ` (troco para: ${data.troco || "não necessário"})` : ""}
+🚚 *Tipo:* ${data.tipoEntrega === "delivery" ? "Delivery" : "Retirada no balcão"}
+📍 *Endereço:* ${enderecoCompleto}
+📞 *WhatsApp:* ${data.telefone}
+✉️ *E-mail:* ${data.email || "—"}
+💬 *Obs:* ${data.observacoes || "Nenhuma"}
+          `.trim(),
+          cliente: data.nome,
+          telefone: data.telefone,
+          email: data.email || "",
+          tipoEntrega: data.tipoEntrega,
+          endereco: enderecoCompleto,
+          pagamento: data.pagamento,
+          troco: data.troco || "",
+          observacoes: data.observacoes || "",
+          itens: itensTexto,
+          total: total.toFixed(2),
+          criado_em: agora.toISOString(),
+        }),
+      });
+    } catch (error) {
+      console.error("Erro ao enviar pedido para o Pipedream/Trello", error);
+      toast.error("Pedido salvo, mas houve um problema ao notificar a equipe.");
+    }
+
     clear();
     setSubmitting(false);
     navigate({ to: "/pedido-confirmado" });
