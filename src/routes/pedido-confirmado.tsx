@@ -84,7 +84,7 @@ function Confirmado() {
       )}
 
       <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
-        <a href="tel:+5532998492121">
+        <a href="https://wa.me/5532998492121" target="_blank" rel="noopener noreferrer">
           <Button variant="outline" size="lg" className="w-full sm:w-auto">
             <Phone className="h-4 w-4" /> Falar com o restaurante
           </Button>
