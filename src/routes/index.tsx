@@ -107,7 +107,7 @@ function Home() {
           className="relative z-10 flex flex-col justify-center px-6 pb-20 pt-32 md:px-12 lg:col-span-7 lg:px-20 lg:pb-0 lg:pt-0"
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
             className="mb-10"
@@ -116,7 +116,7 @@ function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
+            initial={false}
             animate={{ opacity: 0.9, scale: 1, rotate: 0 }}
             transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="mb-6 -ml-1"
