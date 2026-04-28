@@ -151,7 +151,7 @@ function Home() {
           </h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.05 }}
             className="mt-10 max-w-md text-base leading-relaxed text-foreground/70"
@@ -162,7 +162,7 @@ function Home() {
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 0.7 }}
             transition={{ duration: 1, delay: 1.3 }}
             className="mt-6 max-w-sm border-l-2 border-neon-orange/70 pl-4 font-display text-sm italic text-foreground/80"
@@ -175,7 +175,7 @@ function Home() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.2 }}
             className="mt-12 flex flex-wrap items-center gap-4"
