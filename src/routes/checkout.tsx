@@ -136,23 +136,26 @@ function Checkout() {
     const dataFinal = `${dia}/${mes}/${ano}`;
     const horaFinal = `${hora}:${minuto}`;
 
+    const pagamentoTexto = `${data.pagamento}${data.pagamento === "dinheiro" ? ` (troco para: ${data.troco || "não necessário"})` : ""}`;
+    const tipoEntregaTexto = data.tipoEntrega === "delivery" ? "Delivery" : "Retirada no balcão";
+
     try {
       await fetch("https://eos6u8bz6wmwd2t.m.pipedream.net", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          titulo_cartao: `${data.nome} - ${dataFinal} - ${horaFinal}`,
-          cliente: data.nome,
-          itens: itensTexto,
-          total: `R$ ${total.toFixed(2)}`,
-          pagamento: `${data.pagamento}${data.pagamento === "dinheiro" ? ` (troco para: ${data.troco || "não necessário"})` : ""}`,
-          tipoEntrega: data.tipoEntrega === "delivery" ? "Delivery" : "Retirada no balcão",
-          endereco: enderecoCompleto,
-          whatsapp: data.telefone,
-          email: data.email || "",
-          observacoes: data.observacoes || "Nenhuma",
-          data_pedido: dataFinal,
-          hora_pedido: horaFinal,
+          NOME_DO_CARTAO: `${data.nome} - ${dataFinal} - ${horaFinal}`,
+          TEXTO_PEDIDO: `
+Cliente: ${data.nome}
+Itens: ${itensTexto}
+Total: R$ ${total.toFixed(2)}
+Pagamento: ${pagamentoTexto}
+Tipo: ${tipoEntregaTexto}
+Endereço: ${enderecoCompleto}
+WhatsApp: ${data.telefone}
+Obs: ${data.observacoes || "Nenhuma"}
+Horário: ${horaFinal}
+          `,
         }),
       });
     } catch (error) {
