@@ -128,7 +128,7 @@ function Home() {
             {["Cozinha", "autoral,"].map((w, i) => (
               <motion.span
                 key={i}
-                initial={{ opacity: 0, y: 60, filter: "blur(14px)" }}
+                initial={false}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{
                   duration: 1.1,
@@ -141,7 +141,7 @@ function Home() {
               </motion.span>
             ))}
             <motion.em
-              initial={{ opacity: 0, y: 60, filter: "blur(14px)" }}
+              initial={false}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="not-italic"
