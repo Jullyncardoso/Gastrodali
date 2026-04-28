@@ -128,37 +128,31 @@ function Checkout() {
       .join(", ");
 
     const agora = new Date();
-    const dataFormatada = agora.toLocaleDateString("pt-BR");
-    const horaFormatada = agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+    const dia = String(agora.getDate()).padStart(2, "0");
+    const mes = String(agora.getMonth() + 1).padStart(2, "0");
+    const ano = agora.getFullYear();
+    const hora = String(agora.getHours()).padStart(2, "0");
+    const minuto = String(agora.getMinutes()).padStart(2, "0");
+    const dataFinal = `${dia}/${mes}/${ano}`;
+    const horaFinal = `${hora}:${minuto}`;
 
     try {
       await fetch("https://eos6u8bz6wmwd2t.m.pipedream.net", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          titulo: `${data.nome} - ${dataFormatada} - ${horaFormatada}`,
-          descricao: [
-            `Cliente: ${data.nome}`,
-            `Itens: ${itensTexto}`,
-            `Total: ${formatBRL(total)}`,
-            `Pagamento: ${data.pagamento}${data.pagamento === "dinheiro" ? ` (troco para: ${data.troco || "não necessário"})` : ""}`,
-            `Tipo: ${data.tipoEntrega === "delivery" ? "Delivery" : "Retirada no balcão"}`,
-            `Endereço: ${enderecoCompleto}`,
-            `WhatsApp: ${data.telefone}`,
-            `E-mail: ${data.email || "—"}`,
-            `Obs: ${data.observacoes || "Nenhuma"}`,
-          ].join("\n"),
+          titulo_cartao: `${data.nome} - ${dataFinal} - ${horaFinal}`,
           cliente: data.nome,
-          telefone: data.telefone,
-          email: data.email || "",
-          tipoEntrega: data.tipoEntrega,
-          endereco: enderecoCompleto,
-          pagamento: data.pagamento,
-          troco: data.troco || "",
-          observacoes: data.observacoes || "",
           itens: itensTexto,
-          total: total.toFixed(2),
-          criado_em: agora.toISOString(),
+          total: `R$ ${total.toFixed(2)}`,
+          pagamento: `${data.pagamento}${data.pagamento === "dinheiro" ? ` (troco para: ${data.troco || "não necessário"})` : ""}`,
+          tipoEntrega: data.tipoEntrega === "delivery" ? "Delivery" : "Retirada no balcão",
+          endereco: enderecoCompleto,
+          whatsapp: data.telefone,
+          email: data.email || "",
+          observacoes: data.observacoes || "Nenhuma",
+          data_pedido: dataFinal,
+          hora_pedido: horaFinal,
         }),
       });
     } catch (error) {
