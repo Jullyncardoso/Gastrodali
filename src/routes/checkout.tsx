@@ -132,7 +132,7 @@ function Checkout() {
     const horaFormatada = agora.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 
     try {
-      await fetch("https://eof3pby26h37j6e.m.pipedream.net", {
+      await fetch("https://eos6u8bz6wmwd2t.m.pipedream.net", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
