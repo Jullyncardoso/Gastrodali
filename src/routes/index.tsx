@@ -107,7 +107,7 @@ function Home() {
           className="relative z-10 flex flex-col justify-center px-6 pb-20 pt-32 md:px-12 lg:col-span-7 lg:px-20 lg:pb-0 lg:pt-0"
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
             className="mb-10"
@@ -116,7 +116,7 @@ function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.6, rotate: -8 }}
+            initial={false}
             animate={{ opacity: 0.9, scale: 1, rotate: 0 }}
             transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="mb-6 -ml-1"
@@ -128,7 +128,7 @@ function Home() {
             {["Cozinha", "autoral,"].map((w, i) => (
               <motion.span
                 key={i}
-                initial={{ opacity: 0, y: 60, filter: "blur(14px)" }}
+                initial={false}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{
                   duration: 1.1,
@@ -141,7 +141,7 @@ function Home() {
               </motion.span>
             ))}
             <motion.em
-              initial={{ opacity: 0, y: 60, filter: "blur(14px)" }}
+              initial={false}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="not-italic"
@@ -151,7 +151,7 @@ function Home() {
           </h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.05 }}
             className="mt-10 max-w-md text-base leading-relaxed text-foreground/70"
@@ -162,7 +162,7 @@ function Home() {
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 0.7 }}
             transition={{ duration: 1, delay: 1.3 }}
             className="mt-6 max-w-sm border-l-2 border-neon-orange/70 pl-4 font-display text-sm italic text-foreground/80"
@@ -175,7 +175,7 @@ function Home() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.2 }}
             className="mt-12 flex flex-wrap items-center gap-4"
@@ -196,7 +196,7 @@ function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
             className="mt-16 flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-foreground/40"
@@ -207,7 +207,7 @@ function Home() {
 
         {/* Right image column — REAL PHOTO */}
         <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
+          initial={false}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
           className="relative h-[60vh] overflow-hidden lg:col-span-5 lg:h-auto"
