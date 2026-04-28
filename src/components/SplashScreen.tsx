@@ -7,6 +7,11 @@ export function SplashScreen() {
     if (typeof window === "undefined") return true;
     return !sessionStorage.getItem("dali-splash-v3");
   });
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
   React.useEffect(() => {
     if (!show) return;
@@ -16,6 +21,8 @@ export function SplashScreen() {
     }, 2200);
     return () => clearTimeout(t);
   }, [show]);
+
+  if (!mounted) return null;
 
   return (
     <AnimatePresence>
