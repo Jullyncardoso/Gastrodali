@@ -196,7 +196,7 @@ function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
             className="mt-16 flex items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-foreground/40"
@@ -207,7 +207,7 @@ function Home() {
 
         {/* Right image column — REAL PHOTO */}
         <motion.div
-          initial={{ opacity: 0, scale: 1.05 }}
+          initial={false}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
           className="relative h-[60vh] overflow-hidden lg:col-span-5 lg:h-auto"
